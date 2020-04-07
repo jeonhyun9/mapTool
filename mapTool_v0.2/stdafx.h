@@ -38,6 +38,7 @@ using namespace MY_UTIL;
 #include "sceneManager.h"
 #include "iniData.h"
 #include "soundManager.h"
+#include "tileNode.h"
 
 
 //=============================================================
@@ -55,10 +56,10 @@ using namespace MY_UTIL;
 //	## 디파인문 ## (윈도우창 초기화)
 //=============================================================
 #define WINNAME (LPTSTR)(TEXT(" 프로그래밍 19기 "))
-#define WINSTARTX	300
+#define WINSTARTX	100
 #define WINSTARTY	10
-#define WINSIZEX		960
-#define WINSIZEY		960
+#define WINSIZEX		TILEX * TILESIZE
+#define WINSIZEY		TILEY * TILESIZE
 #define WINSTYLE		WS_CAPTION | WS_SYSMENU
 
 //=============================================================
