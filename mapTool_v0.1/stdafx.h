@@ -57,8 +57,8 @@ using namespace MY_UTIL;
 #define WINNAME (LPTSTR)(TEXT(" 프로그래밍 19기 "))
 #define WINSTARTX	300
 #define WINSTARTY	10
-#define WINSIZEX		960
-#define WINSIZEY		960
+#define WINSIZEX		1020
+#define WINSIZEY		1020
 #define WINSTYLE		WS_CAPTION | WS_SYSMENU
 
 //=============================================================

@@ -1,15 +1,15 @@
 #pragma once
 
 //게임화면 타일
-#define TILESIZE 32
+#define TILESIZE 34
 #define TILEX 30
 #define TILEY 30
 #define TILESIZEX (TILEX * TILESIZE)
 #define TILESIZEY (TILEY * TILESIZE)
 
 //이미지 타일(화면 우측상단에 붙여놓을 샘플타일)
-#define SAMPLETILEX 20
-#define SAMPLETILEY 8
+#define SAMPLETILEX 14
+#define SAMPLETILEY 10
 
 //맵툴에서 사용할 컨트롤들
 enum CTRL
@@ -40,6 +40,7 @@ struct tagTile
 	TERRAIN terrain;
 	OBJECT obj;
 	RECT rc;
+	image* img;
 
 	int terrainFrameX;
 	int terrainFrameY;
@@ -73,7 +74,7 @@ struct tagToolButton
 //툴박스 구조체
 struct tagToolBox
 {
-	RECT rc;
+	RECT rcBack;
 	RECT rcPage;
 
 	float width;
@@ -81,8 +82,12 @@ struct tagToolBox
 	float pageWidth;
 	float pageHeight;
 
+	int moveSpeed;
+
 	float x;
 	float y;
+
+	bool toggle;
 };
 
 //툴버튼 구조체
@@ -92,6 +97,12 @@ struct tagToolBtn
 	RECT rcDelete;
 	RECT rcReset;
 	RECT rcLoad;
+
+	image* imaSave;
+	image* imgDelete;
+	image* imgReset;
+	image* imgLoad;
+
 	float width;
 	float height;
 };

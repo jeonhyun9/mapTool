@@ -10,6 +10,7 @@ private:
 	tagToolBox sToolBox;
 	tagToolBtn sToolBtn;
 
+	image* imgTile;
 
 	CTRL ctrlSelect;
 
@@ -20,9 +21,21 @@ public:
 	void update();
 	void render();
 
+	//타일 셋업
 	void tileSetup();
+	void setMap();
 
-	void toolBoxSetup();
+	//세이브 로드
+	void save();
+	void load();
+
+
+	//툴박스 업데이트
+	void toolBoxUpdate();
+
+	//지형 세터
+	TERRAIN terrainSelect(int frameX, int frameY);
+	OBJECT objectSelect(int frameX, int frameY);
 
 	maptool() {}
 	~maptool() {}
