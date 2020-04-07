@@ -60,3 +60,38 @@ struct tagCurrentTile
 {
 	int x, y;
 };
+
+//툴 버튼 구조체
+struct tagToolButton
+{
+	RECT rcSave;
+	RECT rcDelete;
+	RECT rcReset;
+	RECT rcLoad;
+};
+
+//툴박스 구조체
+struct tagToolBox
+{
+	RECT rc;
+	RECT rcPage;
+
+	float width;
+	float height;
+	float pageWidth;
+	float pageHeight;
+
+	float x;
+	float y;
+};
+
+//툴버튼 구조체
+struct tagToolBtn
+{
+	RECT rcSave;
+	RECT rcDelete;
+	RECT rcReset;
+	RECT rcLoad;
+	float width;
+	float height;
+};

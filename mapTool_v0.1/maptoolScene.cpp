@@ -1,5 +1,5 @@
-//#include "stdafx.h"
-//#include "maptoolScene.h"
+#include "stdafx.h"
+#include "maptoolScene.h"
 //
 //HRESULT maptoolScene::init()
 //{
@@ -160,7 +160,7 @@
 //			_currentTile.y = _sampleTile[i].terrainFrameY;
 //			break;
 //		}
-//	}
+//	} 
 //
 //	//인게임화면 렉트틀과 충돌했냐?
 //	for (int i = 0; i < TILEX * TILEY; i++)

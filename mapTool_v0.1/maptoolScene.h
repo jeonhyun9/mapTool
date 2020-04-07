@@ -1,6 +1,6 @@
-//#pragma once
-//#include "gameNode.h"
-//#include "tileNode.h"
+#pragma once
+#include "gameNode.h"
+#include "tileNode.h"
 //
 //class maptoolScene : public gameNode
 //{

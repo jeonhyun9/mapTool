@@ -13,13 +13,13 @@ HRESULT main::init()
 	//각각의 씬들은 메인게임 역할을 한다
 
 	/*씬추가*/
-	SCENEMANAGER->addScene("맵툴기초", new maptoolScene);
+	//SCENEMANAGER->addScene("맵툴기초", new maptoolScene);
 	SCENEMANAGER->addScene("맵툴", new maptool);
 	
 
 	/*현재씬 설정*/
-	SCENEMANAGER->loadScene("맵툴기초");
-	//SCENEMANAGER->loadScene("맵툴");
+	//SCENEMANAGER->loadScene("맵툴기초");
+	SCENEMANAGER->loadScene("맵툴");
 
 
 	return S_OK;

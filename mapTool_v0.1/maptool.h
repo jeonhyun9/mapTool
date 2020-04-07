@@ -7,7 +7,8 @@ private:
 	tagTile sTile[TILEX * TILEY];
 	tagSampleTile sSampleTile[SAMPLETILEX * SAMPLETILEY];
 	tagCurrentTile sCurrentTile;
-
+	tagToolBox sToolBox;
+	tagToolBtn sToolBtn;
 
 
 	CTRL ctrlSelect;
@@ -19,6 +20,9 @@ public:
 	void update();
 	void render();
 
+	void tileSetup();
+
+	void toolBoxSetup();
 
 	maptool() {}
 	~maptool() {}
