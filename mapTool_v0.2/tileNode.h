@@ -1,7 +1,7 @@
 #pragma once
 
 //게임화면 타일
-#define TILESIZE 34
+#define TILESIZE 32
 #define TILEX 30
 #define TILEY 30
 #define TILESIZEX (TILEX * TILESIZE)

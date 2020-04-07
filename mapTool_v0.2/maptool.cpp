@@ -4,7 +4,7 @@
 HRESULT maptool::init()
 {
 	//타일맵 이미지 초기화
-	IMAGEMANAGER->addFrameImage("지형타일1", "images/지형타일1.bmp", 476, 340, SAMPLETILEX, SAMPLETILEY);
+	IMAGEMANAGER->addFrameImage("지형타일1", "images/지형타일1_수정.bmp", 448, 320, SAMPLETILEX, SAMPLETILEY);
 
 
 	//현재타일 초기화
@@ -81,7 +81,7 @@ void maptool::render()
 	{
 		for (int i = 0; i < TILEX * TILEY; i++)
 		{
-			FrameRect(getMemDC(), sTile[i].rc, RGB(255, 255, 0));
+			//FrameRect(getMemDC(), sTile[i].rc, RGB(255, 255, 0));
 			//Rectangle(getMemDC(), sSampleTile[i].rc);
 		}
 
