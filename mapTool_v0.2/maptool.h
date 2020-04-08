@@ -14,6 +14,10 @@ private:
 
 	CTRL ctrlSelect;
 
+	bool isDrag;
+	RECT dragRc;
+	float saveX, saveY;
+
 
 public:
 	HRESULT init();

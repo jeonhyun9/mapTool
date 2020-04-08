@@ -29,6 +29,10 @@ HRESULT maptool::init()
 	//초기 선택 값 = 지형
 	ctrlSelect = CTRL_TERRAIN;
 
+	//드래그 초기화
+	isDrag = false;
+	saveX = saveY = 0;
+
 	return S_OK;
 }
 
@@ -39,36 +43,58 @@ void maptool::release()
 void maptool::update()
 {
 	this->toolBoxUpdate();
-	//좌클릭시 해당 위치에 선택된 타일 그리기
-	if (INPUT->GetKey(VK_LBUTTON)) this->setMap();
 
-	//버튼 클릭 충돌 처리
-	if (INPUT->GetKeyDown(VK_LBUTTON))
+
+	if (INPUT->GetToggleKey('D'))
 	{
-		if (PtInRect(&sToolBtn.rcSave, _ptMouse))
+		if (INPUT->GetKeyDown(VK_LBUTTON))
 		{
-			ctrlSelect = CTRL_SAVE;
-			this->save();
+			isDrag = true;
+			saveX = _ptMouse.x;
+			saveY = _ptMouse.y;
 		}
-		if (PtInRect(&sToolBtn.rcLoad, _ptMouse))
+		if (INPUT->GetKey(VK_LBUTTON))
 		{
-			ctrlSelect = CTRL_LOAD;
-			this->load();
+			dragRc = RectMake(saveX, saveY, (_ptMouse.x - saveX), (_ptMouse.y - saveY));
 		}
-		
-		//아직 사용안함
-		//if (PtInRect(&rcTerrain, _ptMouse))
-		//{
-		//	ctrlSelect = CTRL_TERRAIN;
-		//}
-		//if (PtInRect(&_rcObject, _ptMouse))
-		//{
-		//	ctrlSelect = CTRL_OBJECT;
-		//}
-		//if (PtInRect(&_rcEraser, _ptMouse))
-		//{
-		//	ctrlSelect = CTRL_ERASER;
-		//}
+		if (INPUT->GetKeyUp(VK_LBUTTON))
+		{
+			isDrag = false;
+		}
+	}
+	else
+	{
+		//좌클릭시 해당 위치에 선택된 타일 그리기
+		if (INPUT->GetKey(VK_LBUTTON)) this->setMap();
+
+		//버튼 클릭 충돌 처리
+		if (INPUT->GetKeyDown(VK_LBUTTON))
+		{
+			if (PtInRect(&sToolBtn.rcSave, _ptMouse))
+			{
+				ctrlSelect = CTRL_SAVE;
+				this->save();
+			}
+			if (PtInRect(&sToolBtn.rcLoad, _ptMouse))
+			{
+				ctrlSelect = CTRL_LOAD;
+				this->load();
+			}
+
+			//아직 사용안함
+			//if (PtInRect(&rcTerrain, _ptMouse))
+			//{
+			//	ctrlSelect = CTRL_TERRAIN;
+			//}
+			//if (PtInRect(&_rcObject, _ptMouse))
+			//{
+			//	ctrlSelect = CTRL_OBJECT;
+			//}
+			//if (PtInRect(&_rcEraser, _ptMouse))
+			//{
+			//	ctrlSelect = CTRL_ERASER;
+			//}
+		}
 	}
 }
 
@@ -82,6 +108,44 @@ void maptool::render()
 			sTile[i].terrainFrameX, sTile[i].terrainFrameY);
 	}
 	
+	if (isDrag)
+	{
+		//Rectangle(getMemDC(), dragRc);
+		FrameRect(getMemDC(), dragRc, RGB(255, 0, 0));
+	}
+	else
+	{
+		//인게임화면 렉트틀과 충돌했냐?
+		RECT _tempRc;
+		for (int i = 0; i < TILEX * TILEY; i++)
+		{
+			if (IntersectRect(&_tempRc, &sTile[i].rc, &dragRc))
+			{
+				//현재버튼이 지형이냐?
+				if (ctrlSelect == CTRL_TERRAIN)
+				{
+					sTile[i].terrainFrameX = sCurrentTile.x;
+					sTile[i].terrainFrameY = sCurrentTile.y;
+					sTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
+				}
+				//현재버튼이 오브젝트냐?
+				if (ctrlSelect == CTRL_OBJECT)
+				{
+					sTile[i].objFrameX = sCurrentTile.x;
+					sTile[i].objFrameY = sCurrentTile.y;
+					sTile[i].obj = objectSelect(sCurrentTile.x, sCurrentTile.y);
+				}
+				//현재버튼이 지우개냐?
+				if (ctrlSelect == CTRL_ERASER)
+				{
+					sTile[i].objFrameX = 0;
+					sTile[i].objFrameY = 0;
+					sTile[i].obj = OBJ_NONE;
+				}
+			}
+		}
+	}
+
 	
 	//F1 입력시 인게임화면 렉트 보여주기
 	if (INPUT->GetToggleKey(VK_F1))
