@@ -5,7 +5,10 @@ class maptool : public gameNode
 {
 private:
 	tagTile sTile[TILEX * TILEY];
-	tagSampleTile sSampleTile[SAMPLETILEX * SAMPLETILEY];
+	tagSampleTile sSampleTile_1[SAMPLETILEX * SAMPLETILEY];
+	tagSampleTile sSampleTile_2[SAMPLETILEX * SAMPLETILEY];
+	tagSampleTile sSampleTile_3[SAMPLETILEX * SAMPLETILEY];
+	tagSampleTile sSampleTile_4[SAMPLETILEX * SAMPLETILEY];
 	tagCurrentTile sCurrentTile;
 	tagToolBox sToolBox;
 	tagToolBtn sToolBtn;
@@ -14,10 +17,16 @@ private:
 
 	CTRL ctrlSelect;
 
+
+	RECT rcPagePointer;
+
+
+
+	//드래그용 변수
 	bool isDrag;
 	RECT dragRc;
 	float saveX, saveY;
-
+	//end of 드래그용
 
 public:
 	HRESULT init();

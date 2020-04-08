@@ -8,7 +8,7 @@
 #define TILESIZEY (TILEY * TILESIZE)
 
 //이미지 타일(화면 우측상단에 붙여놓을 샘플타일)
-#define SAMPLETILEX 14
+#define SAMPLETILEX 56
 #define SAMPLETILEY 10
 
 //맵툴에서 사용할 컨트롤들
@@ -23,6 +23,11 @@ enum CTRL
 enum TERRAIN
 {
 	TR_CEMENT, TR_GROUND, TR_GRASS, TR_WATER, TR_END
+};
+
+enum TERRAINTYPE
+{
+	TERRAIN_1,TERRAIN_2,TERRAIN_3,TERRAIN_4,TERRAIN_NONE,
 };
 
 //오브젝트
@@ -41,11 +46,15 @@ struct tagTile
 	OBJECT obj;
 	RECT rc;
 	image* img;
+	
 
+	TERRAINTYPE currentTerrain;
 	int terrainFrameX;
 	int terrainFrameY;
 	int objFrameX;
 	int objFrameY;
+
+	
 };
 
 //이미지 타일 구조체
@@ -77,10 +86,13 @@ struct tagToolBox
 	RECT rcBack;
 	RECT rcPage;
 
+	float currentPage;
 	float width;
 	float height;
 	float pageWidth;
 	float pageHeight;
+
+	int selectedPage;
 
 	int moveSpeed;
 
@@ -97,6 +109,10 @@ struct tagToolBtn
 	RECT rcDelete;
 	RECT rcReset;
 	RECT rcLoad;
+	RECT rcTerrain;
+	RECT rcObject;
+	RECT rcLeftPointer;
+	RECT rcRightPointer;
 
 	image* imaSave;
 	image* imgDelete;
@@ -105,4 +121,9 @@ struct tagToolBtn
 
 	float width;
 	float height;
+};
+
+struct tagPageBtn
+{
+	RECT rc;
 };
