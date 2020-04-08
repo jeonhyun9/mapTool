@@ -32,6 +32,8 @@ HRESULT maptool::init()
 	IMAGEMANAGER->addImage("백그라운드", "images/배경화면.bmp", 2000, 960);
 	IMAGEMANAGER->addImage("미니맵", "images/미니맵화면.bmp", 200, 96);
 	IMAGEMANAGER->addFrameImage("미니타일1", "images/지형타일1_미니.bmp", 45, 32, SAMPLETILEX, SAMPLETILEY);
+	//툴박스이미지 추가
+	IMAGEMANAGER->addImage("툴박스", "images/툴박스.bmp", 1000, 450);
 
 	//현재타일 초기화
 	sCurrentTile.x = 4;
@@ -345,6 +347,7 @@ void maptool::render()
 	if (INPUT->GetToggleKey(VK_F2))
 	{
 		Rectangle(getMemDC(), sToolBox.rcBack);
+		IMAGEMANAGER->render("툴박스", getMemDC(), sToolBox.rcBack.left-25, sToolBox.rcBack.top-25);//툴박스 이미지 추가 
 		Rectangle(getMemDC(), sToolBox.rcPage);
 		Rectangle(getMemDC(), sToolBtn.rcLoad);
 		IMAGEMANAGER->render("버튼_로드", getMemDC(), sToolBtn.rcLoad.left, sToolBtn.rcLoad.top);
@@ -358,9 +361,9 @@ void maptool::render()
 		IMAGEMANAGER->render("버튼_지형", getMemDC(), sToolBtn.rcTerrain.left, sToolBtn.rcTerrain.top);
 		Rectangle(getMemDC(), sToolBtn.rcObject);
 		IMAGEMANAGER->render("버튼_오브젝트", getMemDC(), sToolBtn.rcObject.left, sToolBtn.rcObject.top);
-		//Rectangle(getMemDC(), sToolBtn.rcLeftPointer);
+		Rectangle(getMemDC(), sToolBtn.rcLeftPointer);
 		IMAGEMANAGER->render("버튼_왼쪽화살표", getMemDC(), sToolBtn.rcLeftPointer.left, sToolBtn.rcLeftPointer.top);
-		//Rectangle(getMemDC(), sToolBtn.rcRightPointer);
+		Rectangle(getMemDC(), sToolBtn.rcRightPointer);
 		IMAGEMANAGER->render("버튼_오른쪽화살표", getMemDC(), sToolBtn.rcRightPointer.left, sToolBtn.rcRightPointer.top);
 
 		switch (sToolBox.selectedPage)
@@ -583,12 +586,12 @@ void maptool::toolBoxUpdate()
 	sToolBox.rcPage = RectMake(sToolBox.rcBack.left, sToolBox.rcBack.top, sToolBox.pageWidth, sToolBox.pageHeight);
 
 	//툴박스 버튼 렉트 생성
-	sToolBtn.rcDelete = RectMake(sToolBox.x + 60, sToolBox.y - 60, sToolBtn.width, sToolBtn.height);
-	sToolBtn.rcReset = RectMake(sToolBox.x + 250, sToolBox.y - 60, sToolBtn.width, sToolBtn.height);
-	sToolBtn.rcSave = RectMake(sToolBox.x + 60, sToolBox.y - 130, sToolBtn.width, sToolBtn.height);
-	sToolBtn.rcLoad = RectMake(sToolBox.x + 250, sToolBox.y - 130, sToolBtn.width, sToolBtn.height);
-	sToolBtn.rcTerrain = RectMake(sToolBox.x + 60, sToolBox.y + 10, sToolBtn.width, sToolBtn.height);
-	sToolBtn.rcObject = RectMake(sToolBox.x + 250, sToolBox.y + 10, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcDelete = RectMake(sToolBox.x + 20, sToolBox.y - 60, sToolBtn.width, sToolBtn.height);//x값 30줄임
+	sToolBtn.rcReset = RectMake(sToolBox.x + 210, sToolBox.y - 60, sToolBtn.width, sToolBtn.height);//x값 30줄임
+	sToolBtn.rcSave = RectMake(sToolBox.x + 20, sToolBox.y - 130, sToolBtn.width, sToolBtn.height);//x값 30줄임
+	sToolBtn.rcLoad = RectMake(sToolBox.x + 210, sToolBox.y - 130, sToolBtn.width, sToolBtn.height);//x값 30줄임
+	sToolBtn.rcTerrain = RectMake(sToolBox.x + 20, sToolBox.y + 10, sToolBtn.width, sToolBtn.height);//x값 30줄임
+	sToolBtn.rcObject = RectMake(sToolBox.x + 210, sToolBox.y + 10, sToolBtn.width, sToolBtn.height);//x값 30줄임
 	sToolBtn.rcLeftPointer = RectMake(sToolBox.x - 315, sToolBox.y + 140, 50,50);
 	sToolBtn.rcRightPointer = RectMake(sToolBox.x - 255, sToolBox.y + 140, 50, 50);
 
