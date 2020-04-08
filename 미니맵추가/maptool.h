@@ -5,6 +5,7 @@ class maptool : public gameNode
 {
 private:
 	tagTile sTile[TILEX * TILEY];
+	tagTile sMiniTile[TILEX * TILEY];
 	tagSampleTile sSampleTile[SAMPLETILEX * SAMPLETILEY];
 	tagCurrentTile sCurrentTile;
 	tagToolBox sToolBox;

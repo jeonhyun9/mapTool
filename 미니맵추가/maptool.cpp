@@ -18,6 +18,7 @@ HRESULT maptool::init()
 	IMAGEMANAGER->addImage("버튼_세이브", "images/버튼_세이브.bmp", 173, 57, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("백그라운드", "images/배경화면.bmp", 2000, 960);
 	IMAGEMANAGER->addImage("미니맵", "images/미니맵화면.bmp", 200, 96);
+	IMAGEMANAGER->addFrameImage("미니타일1", "images/지형타일1_미니.bmp", 45, 32, SAMPLETILEX, SAMPLETILEY);
 
 	//현재타일 초기화
 	sCurrentTile.x = 4;
@@ -116,8 +117,18 @@ void maptool::update()
 		}
 	}
 
+	//미니맵 타일 렉트 초기화
+	for (int i = 0; i < TILEY; i++)
+	{
+		for (int j = 0; j < TILEX; j++)
+		{
+			sMiniTile[i * TILEX + j].rc = RectMake(rcMini.left + j * (TILESIZE / 10 + 0.2f), rcMini.top + i * (TILESIZE / 10 + 0.2f), TILESIZE / 10, TILESIZE / 10);
+		}
+	}
+
 	if (INPUT->GetKey('D'))
 	{
+		dragRc = RectMake(-10, -10, 1, 1);
 		if (WINSIZEX >= rcBg.right)
 		{
 			rcBg.right = WINSIZEX;
@@ -132,6 +143,7 @@ void maptool::update()
 	}
 	if (INPUT->GetKey('A'))
 	{
+		dragRc = RectMake(-10, -10, 1, 1);
 		if (0 <= rcBg.left)
 		{
 			rcBg.left = 0;
@@ -161,6 +173,9 @@ void maptool::render()
 		{
 			IMAGEMANAGER->frameRender("지형타일1", getMemDC(), sTile[i].rc.left, sTile[i].rc.top,
 				sTile[i].terrainFrameX, sTile[i].terrainFrameY);
+
+			IMAGEMANAGER->frameRender("미니타일1", getMemDC(), sMiniTile[i].rc.left, sMiniTile[i].rc.top,
+				sMiniTile[i].terrainFrameX, sMiniTile[i].terrainFrameY);
 		}
 	}
 	
@@ -183,6 +198,10 @@ void maptool::render()
 					sTile[i].terrainFrameX = sCurrentTile.x;
 					sTile[i].terrainFrameY = sCurrentTile.y;
 					sTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
+
+					sMiniTile[i].terrainFrameX = sCurrentTile.x;
+					sMiniTile[i].terrainFrameY = sCurrentTile.y;
+					sMiniTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
 				}
 				//현재버튼이 오브젝트냐?
 				if (ctrlSelect == CTRL_OBJECT)
@@ -209,7 +228,16 @@ void maptool::render()
 		for (int i = 0; i < TILEX * TILEY; i++)
 		{
 			FrameRect(getMemDC(), sTile[i].rc, RGB(0, 0, 0));
+			//FrameRect(getMemDC(), sMiniTile[i].rc, RGB(0, 255, 0));
 			//Rectangle(getMemDC(), sSampleTile[i].rc);
+		}
+	}
+
+	if (INPUT->GetToggleKey(VK_F3))
+	{
+		for (int i = 0; i < TILEX * TILEY; i++)
+		{
+			FrameRect(getMemDC(), sMiniTile[i].rc, RGB(0, 255, 0));
 		}
 	}
 	
@@ -288,6 +316,15 @@ void maptool::tileSetup()
 		}
 	}
 
+	////미니맵 타일 렉트 초기화
+	//for (int i = 0; i < TILEY; i++)
+	//{
+	//	for (int j = 0; j < TILEX; j++)
+	//	{
+	//		sMiniTile[i * TILEX + j].rc = RectMake(rcMini.left + j * TILESIZE, rcMini.top + i * TILESIZE, TILESIZE / 10, TILESIZE / 10);
+	//	}
+	//}
+
 	//오른쪽 샘플타일 렉트 초기화
 	for (int i = 0; i < SAMPLETILEY; i++)
 	{
@@ -335,6 +372,10 @@ void maptool::setMap()
 				sTile[i].terrainFrameX = sCurrentTile.x;
 				sTile[i].terrainFrameY = sCurrentTile.y;
 				sTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
+
+				sMiniTile[i].terrainFrameX = sCurrentTile.x;
+				sMiniTile[i].terrainFrameY = sCurrentTile.y;
+				sMiniTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
 			}
 			//현재버튼이 오브젝트냐?
 			if (ctrlSelect == CTRL_OBJECT)
