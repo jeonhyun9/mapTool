@@ -5,7 +5,8 @@ HRESULT maptool::init()
 {
 	//타일맵 이미지 초기화
 	IMAGEMANAGER->addImage("배경화면", "images/배경화면.bmp", 2000,960);
-	IMAGEMANAGER->addFrameImage("지형타일1", "images/지형타일_병합.bmp", 1792, 320, 56, 10);
+	IMAGEMANAGER->addFrameImage("지형타일_병합", "images/지형타일_병합.bmp", 1792, 320, 56, 10);
+	IMAGEMANAGER->addFrameImage("지형타일1", "images/지형타일1_수정.bmp", 448, 320, 14, 10);
 	IMAGEMANAGER->addFrameImage("지형타일2", "images/지형타일2_수정.bmp", 448, 320, 14, 10);
 	IMAGEMANAGER->addFrameImage("지형타일3", "images/지형타일3_수정.bmp", 448, 320, 14, 10);
 	IMAGEMANAGER->addFrameImage("지형타일4", "images/지형타일4_수정.bmp", 448, 320, 14, 10);
@@ -114,7 +115,7 @@ void maptool::render()
 	//인게임화면 지형을 그린다
 	for (int i = 0; i < TILEX * TILEY; i++)
 	{
-			IMAGEMANAGER->frameRender("지형타일1", getMemDC(), sTile[i].rc.left, sTile[i].rc.top,
+			IMAGEMANAGER->frameRender("지형타일_병합", getMemDC(), sTile[i].rc.left, sTile[i].rc.top,
 				sTile[i].terrainFrameX, sTile[i].terrainFrameY);
 	}
 	
@@ -190,6 +191,7 @@ void maptool::render()
 		switch (sToolBox.selectedPage)
 		{
 		case 1:
+			
 			if (ctrlSelect==CTRL_TERRAIN)
 			{
 				IMAGEMANAGER->render("지형타일1", getMemDC(), sToolBox.rcBack.left + 15, sToolBox.rcBack.top + 15);
@@ -234,7 +236,7 @@ void maptool::render()
 		for (int i = 0; i < SAMPLETILEX * SAMPLETILEY; i++)
 		{
 			//Rectangle(getMemDC(), sSampleTile[i].rc);
-			FrameRect(getMemDC(), sSampleTile_1[i].rc, RGB(255, 255, 0));
+			FrameRect(getMemDC(), sSampleTile[i].rc, RGB(255, 255, 0));
 		}
 
 		//툴박스 표시되어 있을 때 화살표 입력시 툴박스 상하좌우 이동
@@ -296,9 +298,8 @@ void maptool::tileSetup()
 	{
 		for (int j = 0; j < SAMPLETILEX; j++)
 		{
-			sSampleTile_1[i * SAMPLETILEX + j].rc = RectMake(sToolBox.rcPage.left + j * TILESIZE, sToolBox.rcPage.top + i * TILESIZE, TILESIZE, TILESIZE);
-			sSampleTile_1[i * SAMPLETILEX + j].terrainFrameX = j;
-			sSampleTile_1[i * SAMPLETILEX + j].terrainFrameY = i;
+			sSampleTile[i * SAMPLETILEX + j].terrainFrameX = j;
+			sSampleTile[i * SAMPLETILEX + j].terrainFrameY = i;
 		}
 	}
 
@@ -319,18 +320,19 @@ void maptool::setMap()
 	for (int i = 0; i < SAMPLETILEX * SAMPLETILEY; i++)
 	{
 		if (sToolBox.toggle == false)continue; //토글키 안누르면 충돌처리를 하지 않는다.
-		if (PtInRect(&sSampleTile_1[i].rc, _ptMouse))
+		if (PtInRect(&sSampleTile[i].rc, _ptMouse))
 		{
-			sCurrentTile.x = sSampleTile_1[i].terrainFrameX;
-			sCurrentTile.y = sSampleTile_1[i].terrainFrameY;
+			sCurrentTile.x = sSampleTile[i].terrainFrameX;
+			sCurrentTile.y = sSampleTile[i].terrainFrameY;
 			break;
 		}
-
+	
 	}
 
 	//인게임화면 렉트틀과 충돌했냐?
 	for (int i = 0; i < TILEX * TILEY; i++)
 	{
+		if (PtInRect(&sToolBox.rcBack,_ptMouse)&&sToolBox.toggle==true)continue; //토글 박스 쪽을 누르면 충돌처리를 하지 않는다.
 		if (PtInRect(&sTile[i].rc, _ptMouse))
 		{
 			//현재버튼이 지형이냐?
@@ -405,7 +407,7 @@ void maptool::toolBoxUpdate()
 	{
 		for (int j = 0; j < SAMPLETILEX; j++)
 		{
-			sSampleTile_1[i * SAMPLETILEX + j].rc = RectMake(sToolBox.rcBack.left + 15 + j * TILESIZE, sToolBox.rcBack.top + 15 + i * TILESIZE, TILESIZE, TILESIZE);
+			sSampleTile[i * SAMPLETILEX + j].rc = RectMake(sToolBox.rcBack.left + 15 + j * TILESIZE, sToolBox.rcBack.top + 15 + i * TILESIZE, TILESIZE, TILESIZE);
 		}
 	}
 
