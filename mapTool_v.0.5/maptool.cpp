@@ -102,7 +102,7 @@ void maptool::update()
 {
 	this->toolBoxUpdate();
 	//Z 누를 때 드래그
-	if (INPUT->GetToggleKey('Z'))
+	if (isDragClick==true)
 	{
 		if (INPUT->GetKeyDown(VK_LBUTTON))
 		{
@@ -112,17 +112,21 @@ void maptool::update()
 				if (sToolBox.toggle == false)continue; //토글키 안누르면 충돌처리를 하지 않는다.
 				if (PtInRect(&sSampleTile[i].rc, _ptMouse))
 				{
-					if (ctrlSelect == CTRL_TERRAIN)
+					RECT rcTemp3;
+					if (IntersectRect(&rcTemp3, &rcToolCamera, &sSampleTile[i].rc))
 					{
-						sCurrentTile.x = sSampleTile[i].terrainFrameX;
-						sCurrentTile.y = sSampleTile[i].terrainFrameY;
+						if (ctrlSelect == CTRL_TERRAIN)
+						{
+							sCurrentTile.x = sSampleTile[i].terrainFrameX;
+							sCurrentTile.y = sSampleTile[i].terrainFrameY;
+						}
+						if (ctrlSelect == CTRL_OBJECT)
+						{
+							sCurrentTile.x = sSampleTile[i].objFrameX;
+							sCurrentTile.y = sSampleTile[i].objFrameY;
+						}
+						break;
 					}
-					if (ctrlSelect == CTRL_OBJECT)
-					{
-						sCurrentTile.x = sSampleTile[i].objFrameX;
-						sCurrentTile.y = sSampleTile[i].objFrameY;
-					}
-					break;
 				}
 			}
 
@@ -200,7 +204,14 @@ void maptool::update()
 			}
 			if (PtInRect(&sToolBtn.rcDrag, _ptMouse))
 			{
-				isDragClick = true;
+				if (isDragClick == false)
+				{
+					isDragClick = true;
+				}
+				else if(isDragClick == true)
+				{
+					isDragClick = false;
+				}
 			}
 			if (PtInRect(&sToolBtn.rcExit, _ptMouse))
 			{
@@ -220,7 +231,6 @@ void maptool::update()
 			isResetClick = false;
 			isPlayerClick = false;
 			isEnemyClick = false;
-			isDragClick = false;
 			isExitClick = false;
 		}
 	}
@@ -303,7 +313,14 @@ void maptool::update()
 			}
 			if (PtInRect(&sToolBtn.rcDrag, _ptMouse))
 			{
-				isDragClick = true;
+				if (isDragClick == false)
+				{
+					isDragClick = true;
+				}
+				else if (isDragClick == true)
+				{
+					isDragClick = false;
+				}
 			}
 			if (PtInRect(&sToolBtn.rcExit, _ptMouse))
 			{
@@ -321,7 +338,6 @@ void maptool::update()
 			isRightPonterClick = false;
 			isPlayerClick = false;
 			isEnemyClick = false;
-			isDragClick = false;
 			isExitClick = false;
 		}
 	}
@@ -779,10 +795,10 @@ void maptool::setMap()
 					sCurrentTile.x = sSampleTile[i].objFrameX;
 					sCurrentTile.y = sSampleTile[i].objFrameY;
 				}
-				
 			}
 			break;
 		}
+
 	}
 
 	//인게임화면 렉트틀과 충돌했냐?
