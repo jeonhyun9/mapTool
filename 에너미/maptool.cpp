@@ -1,0 +1,1011 @@
+#include "stdafx.h"
+#include "maptool.h"
+
+HRESULT maptool::init()
+{
+	//타일맵 이미지 초기화
+	IMAGEMANAGER->addFrameImage("지형타일_병합", "images/지형타일_병합.bmp", 1792, 320, 56, 10);
+	IMAGEMANAGER->addFrameImage("지형타일_병합미니", "images/지형타일_병합미니.bmp", 179, 32, 56, 10);
+
+	IMAGEMANAGER->addFrameImage("지형타일1", "images/지형타일1_수정.bmp", 448, 320, SAMPLETILEX, SAMPLETILEY);
+	IMAGEMANAGER->addFrameImage("지형타일2", "images/지형타일2_수정.bmp", 448, 320, SAMPLETILEX, SAMPLETILEY);
+	IMAGEMANAGER->addFrameImage("지형타일3", "images/지형타일3_수정.bmp", 448, 320, SAMPLETILEX, SAMPLETILEY);
+	IMAGEMANAGER->addFrameImage("지형타일4", "images/지형타일4_수정.bmp", 448, 320, SAMPLETILEX, SAMPLETILEY);
+
+	IMAGEMANAGER->addFrameImage("오브젝트타일1", "images/오브젝트타일1_수정.bmp", 448, 320, SAMPLETILEX, SAMPLETILEY);
+	IMAGEMANAGER->addFrameImage("오브젝트타일2", "images/오브젝트타일2_수정.bmp", 448, 320, SAMPLETILEX, SAMPLETILEY);
+	IMAGEMANAGER->addFrameImage("오브젝트타일3", "images/오브젝트타일3_수정.bmp", 448, 320, SAMPLETILEX, SAMPLETILEY);
+	IMAGEMANAGER->addFrameImage("오브젝트타일4", "images/오브젝트타일4_수정.bmp", 448, 320, SAMPLETILEX, SAMPLETILEY);
+	IMAGEMANAGER->addFrameImage("오브젝트타일_병합", "images/오브젝트타일_병합.bmp", 1792, 320, 56, 10); // 타일 병합 이미지 추가 -동주
+	IMAGEMANAGER->addFrameImage("오브젝트타일_병합미니", "images/오브젝트타일_병합미니.bmp", 179, 32, 56, 10); // 미니타일 병합 이미지 추가 -동주 
+
+	IMAGEMANAGER->addFrameImage("에너미타일_병합", "images/에너미타일_병합.bmp", 448, 320, SAMPLETILEX, SAMPLETILEY);	//에너미타일_병합 이미지 추가 -연우 0409
+	IMAGEMANAGER->addFrameImage("에너미타일_병합미니", "images/에너미타일_병합미니.bmp", 45, 32, SAMPLETILEX, SAMPLETILEY);//에너미타일_병합미니 -연우 0409
+
+	IMAGEMANAGER->addImage("툴박스", "images/툴박스.bmp", 1000, 450, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_이레이저", "images/버튼_이레이저.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_로드", "images/버튼_로드.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_리셋", "images/버튼_리셋.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_세이브", "images/버튼_세이브.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_지형", "images/버튼_지형.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_오브젝트", "images/버튼_오브젝트.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_드래그", "images/버튼_드래그.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_플레이어", "images/버튼_플레이어.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_에너미", "images/버튼_에너미.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_엑시트", "images/버튼_엑시트.bmp", 173, 57, true, RGB(255, 0, 255));
+
+	IMAGEMANAGER->addImage("버튼_이레이저온", "images/버튼_이레이저온.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_로드온", "images/버튼_로드온.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_리셋온", "images/버튼_리셋온.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_세이브온", "images/버튼_세이브온.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_지형온", "images/버튼_지형온.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_오브젝트온", "images/버튼_오브젝트온.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_드래그온", "images/버튼_드래그온.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_플레이어온", "images/버튼_플레이어온.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_에너미온", "images/버튼_에너미온.bmp", 173, 57, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_엑시트온", "images/버튼_엑시트온.bmp", 173, 57, true, RGB(255, 0, 255));
+
+	IMAGEMANAGER->addImage("버튼_왼쪽화살표", "images/버튼_왼쪽화살표.bmp", 51, 60, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_오른쪽화살표", "images/버튼_오른쪽화살표.bmp", 51, 60, true, RGB(255, 0, 255));
+
+	IMAGEMANAGER->addImage("버튼_왼쪽화살표온", "images/버튼_왼쪽화살표온.bmp", 51, 60, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_오른쪽화살표온", "images/버튼_오른쪽화살표온.bmp", 51, 60, true, RGB(255, 0, 255));
+
+	IMAGEMANAGER->addImage("백그라운드", "images/배경화면3배.bmp", 6000, 960); //변경 >> 가로사이즈 3배 - 동주
+	IMAGEMANAGER->addImage("미니맵", "images/배경화면3배미니.bmp", 600, 96); //변경 >> 가로사이즈 3배 - 동주
+
+
+
+	//현재타일 초기화
+	sCurrentTile.x = 12; 
+	sCurrentTile.y = 10; 
+	sToolBox.moveSpeed = 5;
+	sToolBox.toggle = false;
+	sToolBox.selectedPage = 1;
+
+	//타일 셋업
+	this->tileSetup();
+
+	//초기 선택 값 = 지형
+	ctrlSelect = CTRL_TERRAIN;
+
+	//드래그 초기화
+	isDrag = false;
+	saveX = saveY = 0;
+
+	//윈사이즈 렉트
+	rcWins = RectMake(0, 0, WINSIZEX, WINSIZEY);
+	//백그라운드 렉트
+	rcBg = RectMake(0, 0, 6000, 960);     
+	//미니맵 렉트
+	rcMini = RectMake(0, 0, 600, 96); 
+	rcMcamera = RectMake(0, 0, 160, 96);
+
+	//버튼박스클릭 - 버튼클릭했을때 이미지변경 불변수
+	isSaveClick = false;
+	isLoadClick = false;
+	isObjectClick = false;
+	isTerrainClick = false;
+	isDragClick = false;
+	isEraserClick = false;
+	isResetClick = false;
+	isLeftPointerClick = false;
+	isRightPonterClick = false;
+	isEnemyClick = false;
+	isPlayerClick = false;
+	isExitClick = false;
+
+
+	//연우 0409
+	isToolboxClick = false;
+
+	return S_OK;
+}
+
+void maptool::release()
+{
+}
+
+void maptool::update()
+{
+	this->toolBoxUpdate();
+	//Z 누를 때 드래그
+	if (isDragClick==true)
+	{
+		if (INPUT->GetKeyDown(VK_LBUTTON))
+		{
+			//타일 선택 구문 드래그 상태일때 안되서 드래그에 추가함 - 이준
+			for (int i = 0; i < SAMPLETILEX * SAMPLETILEY; i++)
+			{
+				if (sToolBox.toggle == false)continue; //토글키 안누르면 충돌처리를 하지 않는다.
+				if (PtInRect(&sSampleTile[i].rc, _ptMouse))
+				{
+					RECT rcTemp3;
+					if (IntersectRect(&rcTemp3, &rcToolCamera, &sSampleTile[i].rc))
+					{
+						if (ctrlSelect == CTRL_TERRAIN)
+						{
+							sCurrentTile.x = sSampleTile[i].terrainFrameX;
+							sCurrentTile.y = sSampleTile[i].terrainFrameY;
+						}
+						if (ctrlSelect == CTRL_OBJECT)
+						{
+							sCurrentTile.x = sSampleTile[i].objFrameX;
+							sCurrentTile.y = sSampleTile[i].objFrameY;
+						}
+						break;
+					}
+				}
+			}
+
+			isDrag = true;
+			saveX = _ptMouse.x;
+			saveY = _ptMouse.y;
+
+			if (PtInRect(&sToolBtn.rcSave, _ptMouse))
+			{
+				isSaveClick = true;		//추가 세이브눌렀을때 이미지 변경해줌
+				this->save();
+			}
+			if (PtInRect(&sToolBtn.rcLoad, _ptMouse))
+			{
+				isLoadClick = true;		//추가 로드눌렀을때 이미지 변경해줌
+				this->load();
+			}
+
+			if (PtInRect(&sToolBtn.rcEraser, _ptMouse))
+			{
+				if (isEraserClick == false)		//추가 이레이저 눌렀을때 이미지 변경해줌
+				{
+					isEraserClick = true;
+					ctrlSelect = CTRL_ERASER;
+				}
+				else
+				{
+					isEraserClick = false;		//이레이저는 다시 눌러주면 풀림
+					if (isTerrainClick)			//현구짱 이레이저 예외처리 드래그
+					{
+						ctrlSelect = CTRL_TERRAIN;
+					}
+					else if (isObjectClick)
+					{
+						ctrlSelect = CTRL_OBJECT;
+					}
+				}
+			}
+			//아래 5개 구문 추가 안되어있어서 드래그 상태였을때 버튼이 눌리지 않아서 추가해뒀음 - 이준
+			if (PtInRect(&sToolBtn.rcLeftPointer, _ptMouse) && sToolBox.selectedPage >= 2)
+			{
+				isLeftPointerClick = true;
+				sToolBox.selectedPage--;
+			}
+			if (PtInRect(&sToolBtn.rcRightPointer, _ptMouse) && sToolBox.selectedPage < 4)
+			{
+				isRightPonterClick = true;
+				sToolBox.selectedPage++;
+			}
+			if (PtInRect(&sToolBtn.rcTerrain, _ptMouse))
+			{
+				isTerrainClick = true;
+				isObjectClick = false; //오브젝트 상태 변환 -동주 
+				ctrlSelect = CTRL_TERRAIN;
+			}
+			if (PtInRect(&sToolBtn.rcObject, _ptMouse))
+			{
+				isObjectClick = true;
+				isTerrainClick = false; //터레인 상태 변환 -동주 
+				ctrlSelect = CTRL_OBJECT;
+			}
+			if (PtInRect(&sToolBtn.rcReset, _ptMouse))		
+			{
+				isResetClick = true;
+				isEraserClick = false;
+				ctrlSelect = CTRL_RESET;
+			}
+			if (PtInRect(&sToolBtn.rcPlayer, _ptMouse))
+			{
+				isPlayerClick = true;
+			}
+			if (PtInRect(&sToolBtn.rcEnemy, _ptMouse))
+			{
+				isEnemyClick = true;
+			}
+			if (PtInRect(&sToolBtn.rcDrag, _ptMouse))
+			{
+				if (isDragClick == false)
+				{
+					isDragClick = true;
+				}
+				else if(isDragClick == true)
+				{
+					isDragClick = false;
+				}
+			}
+			if (PtInRect(&sToolBtn.rcExit, _ptMouse))
+			{
+				isExitClick = true;
+			}
+		}
+		if (INPUT->GetKey(VK_LBUTTON))
+		{
+			dragRc = RectMake(saveX, saveY, (_ptMouse.x - saveX), (_ptMouse.y - saveY));
+		}
+
+		if (INPUT->GetKeyUp(VK_LBUTTON))		//겟키업으로 눌렀을때 true 값 fasle처리해주기
+		{
+			isDrag = false;
+			isSaveClick = false;
+			isLoadClick = false;
+			isResetClick = false;
+			isPlayerClick = false;
+			isEnemyClick = false;
+			isExitClick = false;
+		}
+	}
+	else
+	{
+		//좌클릭시 해당 위치에 선택된 타일 그리기
+		if (INPUT->GetKey(VK_LBUTTON)) this->setMap();
+
+		//버튼 클릭 충돌 처리
+		if (INPUT->GetKeyDown(VK_LBUTTON))
+		{
+			if (PtInRect(&sToolBtn.rcSave, _ptMouse))
+			{
+				isSaveClick = true;		//추가 세이브 눌렀을때 이미지 변경해줌
+				this->save();
+			}
+			if (PtInRect(&sToolBtn.rcLoad, _ptMouse))
+			{
+				isLoadClick = true;		//추가 로드 눌렀을때 이미지 변경해줌
+				this->load();
+			}
+
+			if (PtInRect(&sToolBtn.rcEraser, _ptMouse))
+			{
+				if (isEraserClick == false)		//추가 이레이저 눌렀을때 이미지 변경해줌
+				{
+					isEraserClick = true;
+					ctrlSelect = CTRL_ERASER;
+				}
+				else
+				{
+					isEraserClick = false;		//이레이저는 다시 눌러주면 풀림
+					if (isTerrainClick)			//현구짱 이레이저 예외처리
+					{
+						ctrlSelect = CTRL_TERRAIN;
+					}
+					else if (isObjectClick)
+					{
+						ctrlSelect = CTRL_OBJECT;
+					}
+				}
+				
+			}
+
+			if (PtInRect(&sToolBtn.rcLeftPointer, _ptMouse) && sToolBox.selectedPage >= 2)
+			{
+				isLeftPointerClick = true;
+				sToolBox.selectedPage--;
+			}
+			if (PtInRect(&sToolBtn.rcRightPointer, _ptMouse) && sToolBox.selectedPage < 4)
+			{
+				isRightPonterClick = true;
+				sToolBox.selectedPage++;
+			}
+			if (PtInRect(&sToolBtn.rcTerrain, _ptMouse))
+			{
+				isTerrainClick = true;
+				isObjectClick = false;
+				isEnemyClick = false;	//연우 0409
+				ctrlSelect = CTRL_TERRAIN;
+			}
+			if (PtInRect(&sToolBtn.rcObject, _ptMouse))
+			{
+				isObjectClick = true;
+				isTerrainClick = false;//임시추가
+				isEnemyClick = false;	//연우 0409
+				ctrlSelect = CTRL_OBJECT;
+			}
+			if (PtInRect(&sToolBtn.rcReset, _ptMouse))		//리셋버튼만들어서 피티인렉해줌
+			{
+				isResetClick = true;
+				isEraserClick = false;
+				ctrlSelect = CTRL_RESET;
+			}
+			if (PtInRect(&sToolBtn.rcPlayer, _ptMouse))
+			{
+				isPlayerClick = true;
+			}
+			if (PtInRect(&sToolBtn.rcEnemy, _ptMouse))
+			{
+				isEnemyClick = true;
+				isObjectClick = false;						//연우 0409
+				isTerrainClick = false;						//연우 0409
+				ctrlSelect = CTRL_ENEMY;					//상태 추가 - 연우 0409
+			}
+			if (PtInRect(&sToolBtn.rcDrag, _ptMouse))
+			{
+				if (isDragClick == false)
+				{
+					isDragClick = true;
+				}
+				else if (isDragClick == true)
+				{
+					isDragClick = false;
+				}
+			}
+			if (PtInRect(&sToolBtn.rcExit, _ptMouse))
+			{
+				isExitClick = true;
+			}
+		}
+		if (INPUT->GetKeyUp(VK_LBUTTON))					//세이브,로드,리셋버튼 false 겟키업 추가
+		{
+			isSaveClick = false;
+			isLoadClick = false;
+			isResetClick = false;
+			//isTerrain = false;
+			//isObject = false;
+			isLeftPointerClick = false;
+			isRightPonterClick = false;
+			isPlayerClick = false;
+			//isEnemyClick = false;				//연우 0409
+			isExitClick = false;
+		}
+	}
+
+	//타일 렉트 초기화
+	for (int i = 0; i < TILEY; i++)
+	{
+		for (int j = 0; j < TILEX; j++)
+		{
+			sTile[i * TILEX + j].rc = RectMake(rcBg.left + j * TILESIZE, rcBg.top + i * TILESIZE, TILESIZE, TILESIZE);
+		}
+	}
+
+	//미니맵 타일 렉트 초기화
+	for (int i = 0; i < TILEY; i++)
+	{
+		for (int j = 0; j < TILEX; j++)
+		{
+			sMiniTile[i * TILEX + j].rc = RectMake(rcMini.left + j * (TILESIZE / 10 + 0.2f), rcMini.top + i * (TILESIZE / 10 + 0.2f), TILESIZE / 10, TILESIZE / 10);
+		}
+	}
+
+	if (INPUT->GetKey('D'))
+	{
+		dragRc = RectMake(-10, -10, 1, 1);
+		if (WINSIZEX >= rcBg.right)
+		{
+			rcBg.right = WINSIZEX;
+		}
+		else
+		{
+			rcBg.left -= 20;
+			rcBg.right -= 20;
+			rcMcamera.left += 2;
+			rcMcamera.right += 2;
+		}
+	}
+	if (INPUT->GetKey('A'))
+	{
+		dragRc = RectMake(-10, -10, 1, 1);
+		if (0 <= rcBg.left)
+		{
+			rcBg.left = 0;
+		}
+		else
+		{
+			rcBg.left += 20;
+			rcBg.right += 20;
+			rcMcamera.left -= 2;
+			rcMcamera.right -= 2;
+		}
+	}
+
+	if (ctrlSelect == CTRL_RESET)					//리셋 로직 추가
+	{
+		for (int i = 0; i < TILEX * TILEY; i++)
+		{
+			//리셋 상태 추가 -동주
+
+			//타일 리셋 트레인 리셋
+				sTile[i].terrainFrameX = 10;
+				sTile[i].terrainFrameY = 9;
+				sTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
+				ctrlSelect = CTRL_TERRAIN;
+			//타일 리셋 오브젝트 리셋
+				sTile[i].objFrameX = 10;
+				sTile[i].objFrameY = 9;
+				sTile[i].obj = objectSelect(sCurrentTile.x, sCurrentTile.y);
+				ctrlSelect = CTRL_OBJECT;
+
+			//미니맵 타일 리셋 상태 추가 - 동주 
+				
+			//미니맵 트레인 리셋
+			sMiniTile[i].terrainFrameX = 12;
+			sMiniTile[i].terrainFrameY = 10;
+			sMiniTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
+			ctrlSelect = CTRL_TERRAIN;
+				
+			//미니맵 오브젝트 리셋
+			sMiniTile[i].objFrameX = 12;
+			sMiniTile[i].objFrameY = 10;
+			sMiniTile[i].obj = objectSelect(sCurrentTile.x, sCurrentTile.y);
+			ctrlSelect = CTRL_OBJECT;
+		}
+	}
+	//툴박스 카메라 렉트추가 - 이준
+	rcToolCamera = RectMake(sToolBox.rcBack.left + 15, sToolBox.rcBack.top + 15, 448, 320);
+
+	if (INPUT->GetKey(VK_LBUTTON))
+	{
+		if (PtInRect(&sToolBox.rcBack, _ptMouse))
+		{
+
+		}
+	}
+
+}
+
+void maptool::render()
+{
+
+	IMAGEMANAGER->render("백그라운드", getMemDC(), rcBg.left, rcBg.top);
+	IMAGEMANAGER->render("미니맵", getMemDC(), rcMini.left, rcMini.top);
+	FrameRect(getMemDC(), rcMini, RGB(0, 0, 0));
+	FrameRect(getMemDC(), rcMcamera, RGB(255, 0, 0));
+	//인게임화면 지형을 그린다
+	RECT rcTemp;
+	for (int i = 0; i < TILEX * TILEY; i++)
+	{
+		if (IntersectRect(&rcTemp, &rcWins, &sTile[i].rc))
+		{
+			IMAGEMANAGER->frameRender("지형타일_병합", getMemDC(), sTile[i].rc.left, sTile[i].rc.top,
+				sTile[i].terrainFrameX, sTile[i].terrainFrameY);
+			//프레임 렌더 이미지 변경 -동주 
+			IMAGEMANAGER->frameRender("지형타일_병합미니", getMemDC(), sMiniTile[i].rc.left, sMiniTile[i].rc.top,
+				sMiniTile[i].terrainFrameX, sMiniTile[i].terrainFrameY);
+
+			IMAGEMANAGER->frameRender("오브젝트타일_병합", getMemDC(), sTile[i].rc.left, sTile[i].rc.top,
+				sTile[i].objFrameX, sTile[i].objFrameY);
+
+			IMAGEMANAGER->frameRender("오브젝트타일_병합미니", getMemDC(), sMiniTile[i].rc.left, sMiniTile[i].rc.top,
+				sMiniTile[i].objFrameX, sMiniTile[i].objFrameY);
+		}
+	}
+	
+	if (isDrag)
+	{
+		FrameRect(getMemDC(), dragRc, RGB(255, 0, 0));
+	}
+	else
+	{
+		//인게임화면 렉트틀과 충돌했냐?
+		RECT _tempRc;
+		for (int i = 0; i < TILEX * TILEY; i++)
+		{
+			if (IntersectRect(&_tempRc, &sTile[i].rc, &dragRc))
+			{
+				//현재버튼이 지형이냐?
+				if (ctrlSelect == CTRL_TERRAIN)
+				{
+					sTile[i].terrainFrameX = sCurrentTile.x;
+					sTile[i].terrainFrameY = sCurrentTile.y;
+					sTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
+
+					sMiniTile[i].terrainFrameX = sCurrentTile.x;
+					sMiniTile[i].terrainFrameY = sCurrentTile.y;
+					sMiniTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
+				}
+				//현재버튼이 오브젝트냐?
+				if (ctrlSelect == CTRL_OBJECT)
+				{
+					sTile[i].objFrameX = sCurrentTile.x;
+					sTile[i].objFrameY = sCurrentTile.y;
+					sTile[i].obj = objectSelect(sCurrentTile.x, sCurrentTile.y);
+
+					sMiniTile[i].objFrameX = sCurrentTile.x;
+					sMiniTile[i].objFrameY = sCurrentTile.y;
+					sMiniTile[i].obj = objectSelect(sCurrentTile.x, sCurrentTile.y);
+				}
+				//현재버튼이 지우개냐?
+				if (ctrlSelect == CTRL_ERASER)							//이레이저 로직추가
+				{
+					if (isEraserClick)
+					{//임시 주석해제
+						if (isTerrainClick)
+						{
+							sTile[i].terrainFrameX = 10;
+							sTile[i].terrainFrameY = 9;
+							sMiniTile[i].terrainFrameX = 12;
+							sMiniTile[i].terrainFrameY = 10;
+						}
+						if (isObjectClick)
+						{
+							sTile[i].objFrameX = 10;
+							sTile[i].objFrameY = 9;
+							sMiniTile[i].objFrameX = 12;
+							sMiniTile[i].objFrameY = 10;
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+
+	
+	//F1 입력시 인게임화면 렉트 보여주기
+	if (INPUT->GetToggleKey(VK_F1))
+	{
+		for (int i = 0; i < TILEX * TILEY; i++)
+		{
+			FrameRect(getMemDC(), sTile[i].rc, RGB(0, 0, 0));
+			//FrameRect(getMemDC(), sMiniTile[i].rc, RGB(0, 255, 0));
+			//Rectangle(getMemDC(), sSampleTile[i].rc);
+		}
+	}
+
+	if (INPUT->GetToggleKey(VK_F3))
+	{
+		for (int i = 0; i < TILEX * TILEY; i++)
+		{
+			FrameRect(getMemDC(), sMiniTile[i].rc, RGB(0, 255, 0));
+		}
+	}
+	
+	//F2 입력시 툴박스 + 페이지 + 버튼 렉트 보여주기
+	if (INPUT->GetToggleKey(VK_F2))
+	{
+		//Rectangle(getMemDC(), sToolBox.rcBack);
+		IMAGEMANAGER->render("툴박스", getMemDC(), sToolBox.rcBack.left - 15, sToolBox.rcBack.top -15);
+		//Rectangle(getMemDC(), sToolBox.rcPage);
+		//Rectangle(getMemDC(), sToolBtn.rcLoad);
+		IMAGEMANAGER->render("버튼_로드", getMemDC(), sToolBtn.rcLoad.left, sToolBtn.rcLoad.top);
+		//Rectangle(getMemDC(), sToolBtn.rcSave);
+		IMAGEMANAGER->render("버튼_세이브", getMemDC(), sToolBtn.rcSave.left, sToolBtn.rcSave.top);
+		//Rectangle(getMemDC(), sToolBtn.rcReset);
+		IMAGEMANAGER->render("버튼_리셋", getMemDC(), sToolBtn.rcReset.left, sToolBtn.rcReset.top);
+		//Rectangle(getMemDC(), sToolBtn.rcDelete);
+		IMAGEMANAGER->render("버튼_이레이저", getMemDC(), sToolBtn.rcEraser.left, sToolBtn.rcEraser.top);
+		//Rectangle(getMemDC(), sToolBtn.rcTerrain);
+		IMAGEMANAGER->render("버튼_지형", getMemDC(), sToolBtn.rcTerrain.left, sToolBtn.rcTerrain.top);
+		//Rectangle(getMemDC(), sToolBtn.rcObject);
+		IMAGEMANAGER->render("버튼_오브젝트", getMemDC(), sToolBtn.rcObject.left, sToolBtn.rcObject.top);
+		//Rectangle(getMemDC(), sToolBtn.rcDrag);
+		IMAGEMANAGER->render("버튼_드래그", getMemDC(), sToolBtn.rcDrag.left, sToolBtn.rcDrag.top);
+		//Rectangle(getMemDC(), sToolBtn.rcPlayer);
+		IMAGEMANAGER->render("버튼_플레이어", getMemDC(), sToolBtn.rcPlayer.left, sToolBtn.rcPlayer.top);
+		//Rectangle(getMemDC(), sToolBtn.rcMonster);
+		IMAGEMANAGER->render("버튼_에너미", getMemDC(), sToolBtn.rcEnemy.left, sToolBtn.rcEnemy.top);
+		//Rectangle(getMemDC(), sToolBtn.rcExit);
+		IMAGEMANAGER->render("버튼_엑시트", getMemDC(), sToolBtn.rcExit.left, sToolBtn.rcExit.top);
+		
+		//Rectangle(getMemDC(), rcToolCamera);
+		RECT _rcTemp;
+		switch (sToolBox.selectedPage)
+		{
+		case 1:
+			if (ctrlSelect == CTRL_OBJECT)
+			{
+				IMAGEMANAGER->render("오브젝트타일_병합", getMemDC(), sToolBox.rcBack.left + 15, sToolBox.rcBack.top + 15, 0, 0, 448, 320);
+			}
+			else if(ctrlSelect == CTRL_TERRAIN)
+			{
+				IMAGEMANAGER->render("지형타일_병합", getMemDC(), sToolBox.rcBack.left + 15, sToolBox.rcBack.top + 15, 0, 0, 448, 320);
+			}
+			//케이스1 에너미꺼 추가 - 연우 0409
+			else if (ctrlSelect == CTRL_ENEMY)
+			{
+				IMAGEMANAGER->render("에너미타일_병합", getMemDC(), sToolBox.rcBack.left + 15, sToolBox.rcBack.top + 15, 0, 0, 448, 320);
+				
+			}
+			//케이스 1~4까지 포문 추가 - 타일 테두리 렉트 인터섹트렉트 - 이준
+			for (int i = 0; i < SAMPLETILEX * SAMPLETILEY; i++)
+			{
+				if (IntersectRect(&_rcTemp, &rcToolCamera, &sSampleTile[i].rc))
+				{
+					FrameRect(getMemDC(), sSampleTile[i].rc, RGB(255, 255, 0));
+				}
+			}
+			break;
+		case 2:
+			if (ctrlSelect == CTRL_OBJECT)
+			{
+				IMAGEMANAGER->render("오브젝트타일_병합", getMemDC(), sToolBox.rcBack.left + 15, sToolBox.rcBack.top + 15, 448, 0, 448, 320);
+			}
+			else
+			{
+				//병합 사진파일로 바꾸면서 이미지 소스좌표 및 소스가로세로 크기 변화 추가 - 이준
+				IMAGEMANAGER->render("지형타일_병합", getMemDC(), sToolBox.rcBack.left + 15, sToolBox.rcBack.top + 15, 448, 0, 448, 320);
+			}
+			//케이스 1~4까지 포문 추가 - 타일 테두리 렉트 인터섹트렉트 - 이준
+			for (int i = 0; i < SAMPLETILEX * SAMPLETILEY; i++)
+			{
+				if (IntersectRect(&_rcTemp, &rcToolCamera, &sSampleTile[i].rc))
+				{
+					FrameRect(getMemDC(), sSampleTile[i].rc, RGB(255, 255, 0));
+				}
+			}
+			break;
+		case 3:
+			if (ctrlSelect == CTRL_OBJECT)
+			{
+				IMAGEMANAGER->render("오브젝트타일_병합", getMemDC(), sToolBox.rcBack.left + 15, sToolBox.rcBack.top + 15, 896, 0, 448, 320);
+			}
+			else
+			{
+				//병합 사진파일로 바꾸면서 이미지 소스좌표 및 소스가로세로 크기 변화 추가 - 이준
+				IMAGEMANAGER->render("지형타일_병합", getMemDC(), sToolBox.rcBack.left + 15, sToolBox.rcBack.top + 15, 896, 0, 448, 320);
+			}
+			//케이스 1~4까지 포문 추가 - 타일 테두리 렉트 인터섹트렉트 - 이준
+			for (int i = 0; i < SAMPLETILEX * SAMPLETILEY; i++)
+			{
+				if (IntersectRect(&_rcTemp, &rcToolCamera, &sSampleTile[i].rc))
+				{
+					FrameRect(getMemDC(), sSampleTile[i].rc, RGB(255, 255, 0));
+				}
+			}
+			break;
+		case 4:
+			if (ctrlSelect == CTRL_OBJECT)
+			{
+				IMAGEMANAGER->render("오브젝트타일_병합", getMemDC(), sToolBox.rcBack.left + 15, sToolBox.rcBack.top + 15, 1344, 0, 448, 320);
+			}
+			else
+			{
+				//병합 사진파일로 바꾸면서 이미지 소스좌표 및 소스가로세로 크기 변화 추가 - 이준
+				IMAGEMANAGER->render("지형타일_병합", getMemDC(), sToolBox.rcBack.left + 15, sToolBox.rcBack.top + 15, 1344, 0, 448, 320);
+			}
+			//케이스 1~4까지 포문 추가 - 타일 테두리 렉트 인터섹트렉트 - 이준
+			for (int i = 0; i < SAMPLETILEX * SAMPLETILEY; i++)
+			{
+				if (IntersectRect(&_rcTemp, &rcToolCamera, &sSampleTile[i].rc))
+				{
+					FrameRect(getMemDC(), sSampleTile[i].rc, RGB(255, 255, 0));
+				}
+			}
+			break;
+
+
+		}
+
+		//눌렀을때 버튼 변환 로직 추가
+		if (isLoadClick)
+		{
+			IMAGEMANAGER->render("버튼_로드온", getMemDC(), sToolBtn.rcLoad.left, sToolBtn.rcLoad.top);
+		}
+		if (isSaveClick)
+		{
+			IMAGEMANAGER->render("버튼_세이브온", getMemDC(), sToolBtn.rcSave.left, sToolBtn.rcSave.top);
+		}
+		if (isResetClick)
+		{
+			IMAGEMANAGER->render("버튼_리셋온", getMemDC(), sToolBtn.rcReset.left, sToolBtn.rcReset.top);
+		}
+		if (isEraserClick)
+		{
+			IMAGEMANAGER->render("버튼_이레이저온", getMemDC(), sToolBtn.rcEraser.left, sToolBtn.rcEraser.top);
+		}
+		if (isObjectClick)
+		{
+			IMAGEMANAGER->render("버튼_오브젝트온", getMemDC(), sToolBtn.rcObject.left, sToolBtn.rcObject.top);
+		}
+		if (isTerrainClick)
+		{
+			IMAGEMANAGER->render("버튼_지형온", getMemDC(), sToolBtn.rcTerrain.left, sToolBtn.rcTerrain.top);
+		}
+		if (isDragClick)
+		{
+			IMAGEMANAGER->render("버튼_드래그온", getMemDC(), sToolBtn.rcDrag.left, sToolBtn.rcDrag.top);
+		}
+		if (isPlayerClick)
+		{
+			IMAGEMANAGER->render("버튼_플레이어온", getMemDC(), sToolBtn.rcPlayer.left, sToolBtn.rcPlayer.top);
+		}
+		if (isEnemyClick)
+		{
+			IMAGEMANAGER->render("버튼_에너미온", getMemDC(), sToolBtn.rcEnemy.left, sToolBtn.rcEnemy.top);
+		}
+		if (isExitClick)
+		{
+			IMAGEMANAGER->render("버튼_엑시트온", getMemDC(), sToolBtn.rcExit.left, sToolBtn.rcExit.top);
+		}
+
+		//화살표 이미지 클릭감 ㅎㅎ
+		if (isLeftPointerClick)
+		{
+			IMAGEMANAGER->render("버튼_왼쪽화살표온", getMemDC(), sToolBtn.rcLeftPointer.left, sToolBtn.rcLeftPointer.top);
+		}
+		else
+		{
+			//Rectangle(getMemDC(), sToolBtn.rcLeftPointer);
+			IMAGEMANAGER->render("버튼_왼쪽화살표", getMemDC(), sToolBtn.rcLeftPointer.left, sToolBtn.rcLeftPointer.top);
+		}
+		if (isRightPonterClick)
+		{
+			IMAGEMANAGER->render("버튼_오른쪽화살표온", getMemDC(), sToolBtn.rcRightPointer.left, sToolBtn.rcRightPointer.top);
+		}
+		else
+		{
+			//Rectangle(getMemDC(), sToolBtn.rcRightPointer);
+			IMAGEMANAGER->render("버튼_오른쪽화살표", getMemDC(), sToolBtn.rcRightPointer.left, sToolBtn.rcRightPointer.top);
+		}
+
+		//툴박스 표시되어 있을 때 화살표 입력시 툴박스 상하좌우 이동
+		if (INPUT->GetKey(VK_LEFT))
+		{
+			sToolBox.x -= sToolBox.moveSpeed;
+		}
+		if (INPUT->GetKey(VK_RIGHT))
+		{
+			sToolBox.x += sToolBox.moveSpeed;
+		}
+		if (INPUT->GetKey(VK_UP))
+		{
+			sToolBox.y -= sToolBox.moveSpeed;
+		}
+		if (INPUT->GetKey(VK_DOWN))
+		{
+			sToolBox.y += sToolBox.moveSpeed;
+		}
+
+		sToolBox.toggle = true;
+	}
+	else
+	{
+		sToolBox.toggle = false;
+	}
+
+
+}
+
+void maptool::tileSetup()
+{
+	//툴박스 초기화
+	sToolBox.toggle = false;
+	sToolBox.x = WINSIZEX/2;
+	sToolBox.y = 670;
+	sToolBox.width = 1000;
+	sToolBox.height = 400;
+
+	//페이지 초기화
+	sToolBox.pageWidth = 480;
+	sToolBox.pageHeight = 400;
+
+	//툴버튼 초기화
+	sToolBtn.width = 173;
+	sToolBtn.height = 53;
+
+	//샘플타일 렉트 초기화
+	for (int i = 0; i < SAMPLETILEY; i++)
+	{
+		for (int j = 0; j < SAMPLETILEX; j++)
+		{	
+			sSampleTile[i * SAMPLETILEX + j].terrainFrameX = j;
+			sSampleTile[i * SAMPLETILEX + j].terrainFrameY = i;
+			sSampleTile[i * SAMPLETILEX + j].objFrameX = j;
+			sSampleTile[i * SAMPLETILEX + j].objFrameY = i;
+		}
+	}
+
+	//타일의 초기화면 
+	for (int i = 0; i < TILEX * TILEY; i++)
+	{
+		sTile[i].terrainFrameX = 10; //지형 타일 X좌표
+		sTile[i].terrainFrameY = 8; //지형 타일 Y좌표
+		sTile[i].objFrameX = 0; //오브젝트 타일 X좌표
+		sTile[i].objFrameY = 0; //오브젝트 타일 Y좌표
+		sTile[i].terrain = terrainSelect(sTile[i].terrainFrameX, sTile[i].terrainFrameY); //해당 X,Y 좌표 값 가진 타일 선택
+		//sTile[i].obj = OBJ_NONE; //오브젝트 선택안한 상태
+	}
+}
+
+void maptool::setMap()
+{
+	RECT _rcTemp2;
+	for (int i = 0; i < SAMPLETILEX * SAMPLETILEY; i++)
+	{
+		if (sToolBox.toggle == false)continue; //토글키 안누르면 충돌처리를 하지 않는다.
+		if (PtInRect(&sSampleTile[i].rc, _ptMouse))
+		{
+			//툴박스 업데이트 인터섹터렉트 예외처리 - 동주
+			if (IntersectRect(&_rcTemp2, &rcToolCamera, &sSampleTile[i].rc))
+			{
+				if (ctrlSelect == CTRL_TERRAIN)
+				{
+					sCurrentTile.x = sSampleTile[i].terrainFrameX;
+					sCurrentTile.y = sSampleTile[i].terrainFrameY;
+				}
+				if (ctrlSelect == CTRL_OBJECT)
+				{
+					sCurrentTile.x = sSampleTile[i].objFrameX;
+					sCurrentTile.y = sSampleTile[i].objFrameY;
+				}
+			}
+			break;
+		}
+
+	}
+
+	//인게임화면 렉트틀과 충돌했냐?
+	for (int i = 0; i < TILEX * TILEY; i++)
+	{
+		if (PtInRect(&sTile[i].rc, _ptMouse))
+		{
+			if (PtInRect(&sToolBox.rcBack, _ptMouse) && sToolBox.toggle == true)continue; //토글 박스 쪽을 누르면 충돌처리를 하지 않는다.
+			//현재버튼이 지형이냐?
+			if (ctrlSelect == CTRL_TERRAIN)
+			{
+				sTile[i].terrainFrameX = sCurrentTile.x;
+				sTile[i].terrainFrameY = sCurrentTile.y;
+				sTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
+
+				sMiniTile[i].terrainFrameX = sCurrentTile.x;
+				sMiniTile[i].terrainFrameY = sCurrentTile.y;
+				sMiniTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
+			}
+			//현재버튼이 오브젝트냐?
+			if (ctrlSelect == CTRL_OBJECT)
+			{
+				sTile[i].objFrameX = sCurrentTile.x;
+				sTile[i].objFrameY = sCurrentTile.y;
+				sTile[i].obj = objectSelect(sCurrentTile.x, sCurrentTile.y);
+
+				sMiniTile[i].objFrameX = sCurrentTile.x;
+				sMiniTile[i].objFrameY = sCurrentTile.y;
+				sMiniTile[i].obj = objectSelect(sCurrentTile.x, sCurrentTile.y);
+			}
+			//현재버튼이 지우개냐?
+			if (ctrlSelect == CTRL_ERASER)							//이레이저 로직추가
+			{
+				if (isEraserClick)
+				{
+					if (isTerrainClick)//임시주석
+					{
+						sTile[i].terrainFrameX = 10;
+						sTile[i].terrainFrameY = 9;
+						sMiniTile[i].terrainFrameX = 12;
+						sMiniTile[i].terrainFrameY = 10;
+					}
+					if (isObjectClick)//임시주석
+					{
+						sTile[i].objFrameX = 10;
+						sTile[i].objFrameY = 9;
+						sMiniTile[i].objFrameX = 12;
+						sMiniTile[i].objFrameY = 10;
+					}
+				}
+			}
+			
+		}
+	}
+}
+
+void maptool::save()
+{
+	HANDLE file;
+	DWORD write;
+
+	file = CreateFile("save.map", GENERIC_WRITE, 0, NULL, CREATE_ALWAYS,
+		FILE_ATTRIBUTE_NORMAL, NULL);
+	WriteFile(file, sTile, sizeof(tagTile) * TILEX * TILEY, &write, NULL);
+	CloseHandle(file);
+}
+
+void maptool::load()
+{
+	HANDLE file;
+	DWORD read;
+
+	file = CreateFile("save.map", GENERIC_READ, 0, NULL, OPEN_EXISTING,
+		FILE_ATTRIBUTE_NORMAL, NULL);
+	ReadFile(file, sTile, sizeof(tagTile) * TILEX * TILEY, &read, NULL);
+	CloseHandle(file);
+}
+
+
+void maptool::toolBoxUpdate()
+{
+	//툴박스 배경 렉트 생성
+	sToolBox.rcBack = RectMakeCenter(sToolBox.x, sToolBox.y, sToolBox.width, sToolBox.height);
+
+	//툴박스 페이지 렉트 생성
+	sToolBox.rcPage = RectMake(sToolBox.rcBack.left, sToolBox.rcBack.top, sToolBox.pageWidth, sToolBox.pageHeight);
+
+	//툴박스 버튼 렉트 생성
+	//왼쪽 버튼들
+	sToolBtn.rcTerrain = RectMake(sToolBox.x + 10, sToolBox.y - 158, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcPlayer = RectMake(sToolBox.x + 10, sToolBox.y - 88, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcEraser = RectMake(sToolBox.x + 10, sToolBox.y - 18, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcSave = RectMake(sToolBox.x + 10, sToolBox.y + 52, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcReset = RectMake(sToolBox.x + 10, sToolBox.y + 122, sToolBtn.width, sToolBtn.height);
+
+	//오른쪽 버튼들
+	sToolBtn.rcObject = RectMake(sToolBox.x + 225, sToolBox.y - 158, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcEnemy = RectMake(sToolBox.x + 225, sToolBox.y - 88, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcDrag = RectMake(sToolBox.x + 225, sToolBox.y - 18, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcLoad = RectMake(sToolBox.x + 225, sToolBox.y + 52, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcExit = RectMake(sToolBox.x + 225, sToolBox.y + 122, sToolBtn.width, sToolBtn.height);
+
+	//화살표
+	sToolBtn.rcLeftPointer = RectMake(sToolBox.x - 315, sToolBox.y + 140, 50, 50);
+	sToolBtn.rcRightPointer = RectMake(sToolBox.x - 255, sToolBox.y + 140, 50, 50);
+
+	//샘플타일 만들기 위치 바꿔주면서 렉트메이크해서 버튼위치 변화주기 - 이준
+	switch (sToolBox.selectedPage)
+	{
+	case 1:
+		for (int i = 0; i < SAMPLETILEY; i++)
+		{
+			for (int j = 0; j < SAMPLETILEX; j++)
+			{
+				sSampleTile[i * SAMPLETILEX + j].rc = RectMake(sToolBox.rcBack.left + 15 + j * TILESIZE, sToolBox.rcBack.top + 15 + i * TILESIZE, TILESIZE, TILESIZE);
+			}
+		}
+		break;
+	case 2:
+		for (int i = 0; i < SAMPLETILEY; i++)
+		{
+			for (int j = 0; j < SAMPLETILEX; j++)
+			{
+				sSampleTile[i * SAMPLETILEX + j].rc = RectMake(sToolBox.rcBack.left - 433 + j * TILESIZE, sToolBox.rcBack.top + 15 + i * TILESIZE, TILESIZE, TILESIZE);
+			}
+		}
+		break;
+	case 3:
+		for (int i = 0; i < SAMPLETILEY; i++)
+		{
+			for (int j = 0; j < SAMPLETILEX; j++)
+			{
+				sSampleTile[i * SAMPLETILEX + j].rc = RectMake(sToolBox.rcBack.left - 881 + j * TILESIZE, sToolBox.rcBack.top + 15 + i * TILESIZE, TILESIZE, TILESIZE);
+			}
+		}
+		break;
+	case 4:
+		for (int i = 0; i < SAMPLETILEY; i++)
+		{
+			for (int j = 0; j < SAMPLETILEX; j++)
+			{
+				sSampleTile[i * SAMPLETILEX + j].rc = RectMake(sToolBox.rcBack.left - 1329 + j * TILESIZE, sToolBox.rcBack.top + 15 + i * TILESIZE, TILESIZE, TILESIZE);
+			}
+		}
+		break;
+	}
+}
+
+TERRAIN maptool::terrainSelect(int frameX, int frameY)
+{
+	//시멘트
+	if (frameX == 1 && frameY == 0)
+	{
+		return TR_CEMENT;
+	}
+	//땅
+	if (frameX == 2 && frameY == 0)
+	{
+		return TR_GROUND;
+	}
+	//잔디
+	if (frameX == 3 && frameY == 0)
+	{
+		return TR_GRASS;
+	}
+	//물
+	if (frameX == 4 && frameY == 0)
+	{
+		return TR_WATER;
+	}
+
+	//기타
+	return TR_GROUND;
+}
+
+OBJECT maptool::objectSelect(int frameX, int frameY)
+{
+	return  OBJ_BLOCKS;
+}
+
