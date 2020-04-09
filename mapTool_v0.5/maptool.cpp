@@ -24,12 +24,17 @@ HRESULT maptool::init()
 	IMAGEMANAGER->addImage("버튼_세이브", "images/버튼_세이브.bmp", 173, 57, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("버튼_지형", "images/버튼_지형.bmp", 173, 57, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("버튼_오브젝트", "images/버튼_오브젝트.bmp", 173, 57, true, RGB(255, 0, 255));
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 	IMAGEMANAGER->addImage("버튼_드래그", "images/버튼_드래그.bmp", 173, 57, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("버튼_플레이어", "images/버튼_플레이어.bmp", 173, 57, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("버튼_에너미", "images/버튼_에너미.bmp", 173, 57, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("버튼_엑시트", "images/버튼_엑시트.bmp", 173, 57, true, RGB(255, 0, 255));
 
 
+=======
+	IMAGEMANAGER->addImage("버튼_왼쪽화살표", "images/버튼_왼쪽화살표.bmp", 51, 60, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("버튼_오른쪽화살표", "images/버튼_오른쪽화살표.bmp", 51, 60, true, RGB(255, 0, 255));
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 
 	IMAGEMANAGER->addImage("버튼_이레이저온", "images/버튼_이레이저온.bmp", 173, 57, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("버튼_로드온", "images/버튼_로드온.bmp", 173, 57, true, RGB(255, 0, 255));
@@ -37,6 +42,7 @@ HRESULT maptool::init()
 	IMAGEMANAGER->addImage("버튼_세이브온", "images/버튼_세이브온.bmp", 173, 57, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("버튼_지형온", "images/버튼_지형온.bmp", 173, 57, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("버튼_오브젝트온", "images/버튼_오브젝트온.bmp", 173, 57, true, RGB(255, 0, 255));
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 	IMAGEMANAGER->addImage("버튼_드래그온", "images/버튼_드래그온.bmp", 173, 57, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("버튼_플레이어온", "images/버튼_플레이어온.bmp", 173, 57, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("버튼_에너미온", "images/버튼_에너미온.bmp", 173, 57, true, RGB(255, 0, 255));
@@ -44,6 +50,8 @@ HRESULT maptool::init()
 
 	IMAGEMANAGER->addImage("버튼_왼쪽화살표", "images/버튼_왼쪽화살표.bmp", 51, 60, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("버튼_오른쪽화살표", "images/버튼_오른쪽화살표.bmp", 51, 60, true, RGB(255, 0, 255));
+=======
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 
 	IMAGEMANAGER->addImage("버튼_왼쪽화살표온", "images/버튼_왼쪽화살표온.bmp", 51, 60, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addImage("버튼_오른쪽화살표온", "images/버튼_오른쪽화살표온.bmp", 51, 60, true, RGB(255, 0, 255));
@@ -52,8 +60,13 @@ HRESULT maptool::init()
 	IMAGEMANAGER->addImage("미니맵", "images/배경화면3배미니.bmp", 600, 96); //변경 >> 가로사이즈 3배 - 동주
 
 	//현재타일 초기화
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 	sCurrentTile.x = 12; //초기 타일 상태 변경 - 동주 
 	sCurrentTile.y = 10; //초기 타일 상태 변경 - 동주 
+=======
+	sCurrentTile.x = 10;
+	sCurrentTile.y = 9;
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 	sToolBox.moveSpeed = 5;
 	sToolBox.toggle = false;
 	sToolBox.selectedPage = 1;
@@ -149,26 +162,41 @@ void maptool::update()
 			//아래 5개 구문 추가 안되어있어서 드래그 상태였을때 버튼이 눌리지 않아서 추가해뒀음 - 이준
 			if (PtInRect(&sToolBtn.rcLeftPointer, _ptMouse) && sToolBox.selectedPage >= 2)
 			{
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 				isLeftPointerClick = true;
+=======
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 				sToolBox.selectedPage--;
 			}
 			if (PtInRect(&sToolBtn.rcRightPointer, _ptMouse) && sToolBox.selectedPage < 4)
 			{
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 				isRightPonterClick = true;
+=======
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 				sToolBox.selectedPage++;
 			}
 			if (PtInRect(&sToolBtn.rcTerrain, _ptMouse))
 			{
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 				isTerrainClick = true;
+=======
+				isTerrain = true;
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 				ctrlSelect = CTRL_TERRAIN;
 			}
 			if (PtInRect(&sToolBtn.rcObject, _ptMouse))
 			{
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 				isObjectClick = true;
+=======
+				isObject = true;
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 				ctrlSelect = CTRL_OBJECT;
 			}
 			if (PtInRect(&sToolBtn.rcReset, _ptMouse))		
 			{
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 				isResetClick = true;
 				isEraserClick = false;
 				ctrlSelect = CTRL_RESET;
@@ -189,6 +217,12 @@ void maptool::update()
 			{
 				isExitClick = true;
 			}
+=======
+				isReset = true;
+				isErase = false;
+				ctrlSelect = CTRL_RESET;
+			}
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 		}
 		if (INPUT->GetKey(VK_LBUTTON))
 		{
@@ -256,12 +290,20 @@ void maptool::update()
 			}
 			if (PtInRect(&sToolBtn.rcTerrain, _ptMouse))
 			{
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 				isTerrainClick = true;
+=======
+				isTerrain = true;
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 				ctrlSelect = CTRL_TERRAIN;
 			}
 			if (PtInRect(&sToolBtn.rcObject, _ptMouse))
 			{
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 				isObjectClick = true;
+=======
+				isObject = true;
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 				ctrlSelect = CTRL_OBJECT;
 			}
 			if (PtInRect(&sToolBtn.rcReset, _ptMouse))		//리셋버튼만들어서 피티인렉해줌
@@ -289,6 +331,7 @@ void maptool::update()
 		}
 		if (INPUT->GetKeyUp(VK_LBUTTON))					//세이브,로드,리셋버튼 false 겟키업 추가
 		{
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 			isSaveClick = false;
 			isLoadClick = false;
 			isResetClick = false;
@@ -300,6 +343,13 @@ void maptool::update()
 			isEnemyClick = false;
 			isDragClick = false;
 			isExitClick = false;
+=======
+			isSave = false;
+			isLoad = false;
+			isReset = false;
+			isTerrain = false;
+			isObject = false;
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 		}
 	}
 
@@ -430,10 +480,15 @@ void maptool::render()
 					{
 						sTile[i].terrainFrameX = 10;
 						sTile[i].terrainFrameY = 9;
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 
 						//미니 타일 인덱스 좌표 수정 -동주
 						sMiniTile[i].terrainFrameX = 12;
 						sMiniTile[i].terrainFrameY = 10;
+=======
+						sMiniTile[i].terrainFrameX = 11;
+						sMiniTile[i].terrainFrameY = 9;
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 						//sTile[i].obj = OBJ_NONE;
 					}
 				}
@@ -476,11 +531,16 @@ void maptool::render()
 		//Rectangle(getMemDC(), sToolBtn.rcReset);
 		IMAGEMANAGER->render("버튼_리셋", getMemDC(), sToolBtn.rcReset.left, sToolBtn.rcReset.top);
 		//Rectangle(getMemDC(), sToolBtn.rcDelete);
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 		IMAGEMANAGER->render("버튼_이레이저", getMemDC(), sToolBtn.rcEraser.left, sToolBtn.rcEraser.top);
+=======
+		IMAGEMANAGER->render("버튼_이레이저", getMemDC(), sToolBtn.rcDelete.left, sToolBtn.rcDelete.top);
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 		//Rectangle(getMemDC(), sToolBtn.rcTerrain);
 		IMAGEMANAGER->render("버튼_지형", getMemDC(), sToolBtn.rcTerrain.left, sToolBtn.rcTerrain.top);
 		//Rectangle(getMemDC(), sToolBtn.rcObject);
 		IMAGEMANAGER->render("버튼_오브젝트", getMemDC(), sToolBtn.rcObject.left, sToolBtn.rcObject.top);
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 		//Rectangle(getMemDC(), sToolBtn.rcDrag);
 		IMAGEMANAGER->render("버튼_드래그", getMemDC(), sToolBtn.rcDrag.left , sToolBtn.rcDrag.top);
 		//Rectangle(getMemDC(), sToolBtn.rcPlayer);
@@ -489,6 +549,12 @@ void maptool::render()
 		IMAGEMANAGER->render("버튼_에너미", getMemDC(), sToolBtn.rcEnemy.left, sToolBtn.rcEnemy.top);
 		//Rectangle(getMemDC(), sToolBtn.rcExit);
 		IMAGEMANAGER->render("버튼_엑시트", getMemDC(), sToolBtn.rcExit.left, sToolBtn.rcExit.top);
+=======
+		//Rectangle(getMemDC(), sToolBtn.rcLeftPointer);
+		IMAGEMANAGER->render("버튼_왼쪽화살표", getMemDC(), sToolBtn.rcLeftPointer.left, sToolBtn.rcLeftPointer.top);
+		//Rectangle(getMemDC(), sToolBtn.rcRightPointer);
+		IMAGEMANAGER->render("버튼_오른쪽화살표", getMemDC(), sToolBtn.rcRightPointer.left, sToolBtn.rcRightPointer.top);
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 		
 		//Rectangle(getMemDC(), rcToolCamera);
 		RECT _rcTemp;
@@ -612,6 +678,7 @@ void maptool::render()
 		{
 			IMAGEMANAGER->render("버튼_엑시트온", getMemDC(), sToolBtn.rcExit.left, sToolBtn.rcExit.top);
 		}
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 
 		//화살표 이미지 클릭감 ㅎㅎ
 		if (isLeftPointerClick)
@@ -631,6 +698,15 @@ void maptool::render()
 		{
 			//Rectangle(getMemDC(), sToolBtn.rcRightPointer);
 			IMAGEMANAGER->render("버튼_오른쪽화살표", getMemDC(), sToolBtn.rcRightPointer.left, sToolBtn.rcRightPointer.top);
+=======
+		if (isObject)
+		{
+			IMAGEMANAGER->render("버튼_오브젝트온", getMemDC(), sToolBtn.rcObject.left, sToolBtn.rcObject.top);
+		}
+		if (isTerrain)
+		{
+			IMAGEMANAGER->render("버튼_지형온", getMemDC(), sToolBtn.rcTerrain.left, sToolBtn.rcTerrain.top);
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 		}
 
 		//툴박스 표시되어 있을 때 화살표 입력시 툴박스 상하좌우 이동
@@ -749,9 +825,14 @@ void maptool::setMap()
 				{
 					sTile[i].terrainFrameX = 10;
 					sTile[i].terrainFrameY = 9;
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 					//미니맵 타일 인덱스 좌표 수정 - 동주
 					sMiniTile[i].terrainFrameX = 12;
 					sMiniTile[i].terrainFrameY = 10;
+=======
+					sMiniTile[i].terrainFrameX = 11;
+					sMiniTile[i].terrainFrameY = 9;
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 					//sTile[i].obj = OBJ_NONE;
 				}
 			}
@@ -792,6 +873,7 @@ void maptool::toolBoxUpdate()
 	sToolBox.rcPage = RectMake(sToolBox.rcBack.left, sToolBox.rcBack.top, sToolBox.pageWidth, sToolBox.pageHeight);
 
 	//툴박스 버튼 렉트 생성
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 	//왼쪽 버튼들
 	sToolBtn.rcTerrain = RectMake(sToolBox.x + 10, sToolBox.y - 158, sToolBtn.width, sToolBtn.height);
 	sToolBtn.rcPlayer = RectMake(sToolBox.x + 10, sToolBox.y - 88, sToolBtn.width, sToolBtn.height);
@@ -809,6 +891,15 @@ void maptool::toolBoxUpdate()
 
 
 	sToolBtn.rcLeftPointer = RectMake(sToolBox.x - 315, sToolBox.y + 140, 50, 50);
+=======
+	sToolBtn.rcDelete = RectMake(sToolBox.x + 10, sToolBox.y - 60, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcReset = RectMake(sToolBox.x + 225, sToolBox.y - 60, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcSave = RectMake(sToolBox.x + 10, sToolBox.y - 130, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcLoad = RectMake(sToolBox.x + 225, sToolBox.y - 130, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcTerrain = RectMake(sToolBox.x + 10, sToolBox.y + 10, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcObject = RectMake(sToolBox.x + 225, sToolBox.y + 10, sToolBtn.width, sToolBtn.height);
+	sToolBtn.rcLeftPointer = RectMake(sToolBox.x - 315, sToolBox.y + 140, 50,50);
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 	sToolBtn.rcRightPointer = RectMake(sToolBox.x - 255, sToolBox.y + 140, 50, 50);
 
 	//샘플타일 만들기 위치 바꿔주면서 렉트메이크해서 버튼위치 변화주기 - 이준
@@ -816,6 +907,7 @@ void maptool::toolBoxUpdate()
 	{
 	case 1:
 		for (int i = 0; i < SAMPLETILEY; i++)
+<<<<<<< HEAD:mapTool_v0.5/maptool.cpp
 		{
 			for (int j = 0; j < SAMPLETILEX; j++)
 			{
@@ -846,6 +938,38 @@ void maptool::toolBoxUpdate()
 		{
 			for (int j = 0; j < SAMPLETILEX; j++)
 			{
+=======
+		{
+			for (int j = 0; j < SAMPLETILEX; j++)
+			{
+				sSampleTile[i * SAMPLETILEX + j].rc = RectMake(sToolBox.rcBack.left + 15 + j * TILESIZE, sToolBox.rcBack.top + 15 + i * TILESIZE, TILESIZE, TILESIZE);
+			}
+		}
+		break;
+	case 2:
+		for (int i = 0; i < SAMPLETILEY; i++)
+		{
+			for (int j = 0; j < SAMPLETILEX; j++)
+			{
+				sSampleTile[i * SAMPLETILEX + j].rc = RectMake(sToolBox.rcBack.left - 433 + j * TILESIZE, sToolBox.rcBack.top + 15 + i * TILESIZE, TILESIZE, TILESIZE);
+			}
+		}
+		break;
+	case 3:
+		for (int i = 0; i < SAMPLETILEY; i++)
+		{
+			for (int j = 0; j < SAMPLETILEX; j++)
+			{
+				sSampleTile[i * SAMPLETILEX + j].rc = RectMake(sToolBox.rcBack.left - 881 + j * TILESIZE, sToolBox.rcBack.top + 15 + i * TILESIZE, TILESIZE, TILESIZE);
+			}
+		}
+		break;
+	case 4:
+		for (int i = 0; i < SAMPLETILEY; i++)
+		{
+			for (int j = 0; j < SAMPLETILEX; j++)
+			{
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.cpp
 				sSampleTile[i * SAMPLETILEX + j].rc = RectMake(sToolBox.rcBack.left - 1329 + j * TILESIZE, sToolBox.rcBack.top + 15 + i * TILESIZE, TILESIZE, TILESIZE);
 			}
 		}

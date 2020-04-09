@@ -28,6 +28,7 @@ private:
 	RECT rcMcamera;
 
 	//버튼클릭이미지 렌더용			//불변수 추가
+<<<<<<< HEAD:mapTool_v0.5/maptool.h
 	bool isSaveClick;
 	bool isLoadClick;
 	bool isObjectClick;
@@ -43,6 +44,16 @@ private:
 
 
 
+=======
+	bool isSave;
+	bool isLoad;
+	bool isObject;
+	bool isTerrain;
+	bool isDragBox;
+	bool isErase;
+	bool isReset;
+	
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/maptool.h
 	//툴박스 렉트
 	RECT rcToolCamera;			//툴박스 왼쪽편 블럭 인터섹트렉트용 카메라렉트 - 이준
 

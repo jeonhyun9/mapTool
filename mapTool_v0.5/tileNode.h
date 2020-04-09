@@ -8,7 +8,11 @@
 #define TILESIZEY (TILEY * TILESIZE)
 
 //이미지 타일(화면 우측상단에 붙여놓을 샘플타일)
+<<<<<<< HEAD:mapTool_v0.5/tileNode.h
 #define SAMPLETILEX 56 
+=======
+#define SAMPLETILEX 56
+>>>>>>> 1e90396d34c982ff771d41cdeb1aaa66b48c7c4a:mapTool_v0.4/tileNode.h
 #define SAMPLETILEY 10
 
 //맵툴에서 사용할 컨트롤들
