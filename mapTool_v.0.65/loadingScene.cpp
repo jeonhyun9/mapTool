@@ -129,7 +129,7 @@ void loadingScene::loadingImage()
 	_loading->loadImage("나가기온버튼", "images/나가기버튼_on.bmp", 293, 95);
 																
 	//로딩이 너무 빠르게 진행되서 천천히 돌아가도록 테스트용으로 만들기
-	for (int i = 0; i < 300; i++)
+	for (int i = 0; i < 100; i++)
 	{
 		_loading->loadImage("테스트", WINSIZEX, WINSIZEY);
 	}

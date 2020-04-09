@@ -77,11 +77,12 @@ HRESULT maptool::init()
 	isEraserClick = false;
 	isResetClick = false;
 	isLeftPointerClick = false;
-	isRightPonterClick = false;
+	isRightPointerClick = false;
 	isEnemyClick = false;
 	isPlayerClick = false;
 	isExitClick = false;
 
+	dragRc = RectMake(-10, -10, 1, 1);
 
 	return S_OK;
 }
@@ -165,7 +166,7 @@ void maptool::update()
 			}
 			if (PtInRect(&sToolBtn.rcRightPointer, _ptMouse) && sToolBox.selectedPage < 4)
 			{
-				isRightPonterClick = true;
+				isRightPointerClick = true;
 				sToolBox.selectedPage++;
 			}
 			if (PtInRect(&sToolBtn.rcTerrain, _ptMouse))
@@ -224,6 +225,8 @@ void maptool::update()
 			isPlayerClick = false;
 			isEnemyClick = false;
 			isExitClick = false;
+			isLeftPointerClick = false;
+			isRightPointerClick = false;
 		}
 	}
 	else
@@ -274,7 +277,7 @@ void maptool::update()
 			}
 			if (PtInRect(&sToolBtn.rcRightPointer, _ptMouse) && sToolBox.selectedPage < 4)
 			{
-				isRightPonterClick = true;
+				isRightPointerClick = true;
 				sToolBox.selectedPage++;
 			}
 			if (PtInRect(&sToolBtn.rcTerrain, _ptMouse))
@@ -327,7 +330,7 @@ void maptool::update()
 			//isTerrain = false;
 			//isObject = false;
 			isLeftPointerClick = false;
-			isRightPonterClick = false;
+			isRightPointerClick = false;
 			isPlayerClick = false;
 			isEnemyClick = false;
 			isExitClick = false;
@@ -448,56 +451,61 @@ void maptool::render()
 	
 	if (isDrag)
 	{
-		FrameRect(getMemDC(), dragRc, RGB(255, 0, 0));
-	}
-	else
-	{
-		//인게임화면 렉트틀과 충돌했냐?
-		RECT _tempRc;
-		for (int i = 0; i < TILEX * TILEY; i++)
+		//아래 버그 드래그 버그 잡아둔것 - 이준 (엘스 사라지고 인풋으로 바꿧음)
+		if (INPUT->GetKey(VK_LBUTTON))
 		{
-			if (IntersectRect(&_tempRc, &sTile[i].rc, &dragRc))
+			FrameRect(getMemDC(), dragRc, RGB(255, 0, 0));
+		}
+
+		if (INPUT->GetKeyUp(VK_LBUTTON))
+		{
+			//인게임화면 렉트틀과 충돌했냐?
+			RECT _tempRc;
+			for (int i = 0; i < TILEX * TILEY; i++)
 			{
-				//현재버튼이 지형이냐?
-				if (ctrlSelect == CTRL_TERRAIN)
+				if (IntersectRect(&_tempRc, &sTile[i].rc, &dragRc))
 				{
-					sTile[i].terrainFrameX = sCurrentTile.x;
-					sTile[i].terrainFrameY = sCurrentTile.y;
-					sTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
+					//현재버튼이 지형이냐?
+					if (ctrlSelect == CTRL_TERRAIN)
+					{
+						sTile[i].terrainFrameX = sCurrentTile.x;
+						sTile[i].terrainFrameY = sCurrentTile.y;
+						sTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
 
-					sMiniTile[i].terrainFrameX = sCurrentTile.x;
-					sMiniTile[i].terrainFrameY = sCurrentTile.y;
-					sMiniTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
-				}
-				//현재버튼이 오브젝트냐?
-				if (ctrlSelect == CTRL_OBJECT)
-				{
-					sTile[i].objFrameX = sCurrentTile.x;
-					sTile[i].objFrameY = sCurrentTile.y;
-					sTile[i].obj = objectSelect(sCurrentTile.x, sCurrentTile.y);
+						sMiniTile[i].terrainFrameX = sCurrentTile.x;
+						sMiniTile[i].terrainFrameY = sCurrentTile.y;
+						sMiniTile[i].terrain = terrainSelect(sCurrentTile.x, sCurrentTile.y);
+					}
+					//현재버튼이 오브젝트냐?
+					if (ctrlSelect == CTRL_OBJECT)
+					{
+						sTile[i].objFrameX = sCurrentTile.x;
+						sTile[i].objFrameY = sCurrentTile.y;
+						sTile[i].obj = objectSelect(sCurrentTile.x, sCurrentTile.y);
 
-					sMiniTile[i].objFrameX = sCurrentTile.x;
-					sMiniTile[i].objFrameY = sCurrentTile.y;
-					sMiniTile[i].obj = objectSelect(sCurrentTile.x, sCurrentTile.y);
-				}
-				//현재버튼이 지우개냐?
-				if (ctrlSelect == CTRL_ERASER)							//이레이저 로직추가
-				{
-					if (isEraserClick)
-					{//임시 주석해제
-						if (isTerrainClick)
-						{
-							sTile[i].terrainFrameX = 10;
-							sTile[i].terrainFrameY = 9;
-							sMiniTile[i].terrainFrameX = 12;
-							sMiniTile[i].terrainFrameY = 10;
-						}
-						if (isObjectClick)
-						{
-							sTile[i].objFrameX = 10;
-							sTile[i].objFrameY = 9;
-							sMiniTile[i].objFrameX = 12;
-							sMiniTile[i].objFrameY = 10;
+						sMiniTile[i].objFrameX = sCurrentTile.x;
+						sMiniTile[i].objFrameY = sCurrentTile.y;
+						sMiniTile[i].obj = objectSelect(sCurrentTile.x, sCurrentTile.y);
+					}
+					//현재버튼이 지우개냐?
+					if (ctrlSelect == CTRL_ERASER)							//이레이저 로직추가
+					{
+						if (isEraserClick)
+						{//임시 주석해제
+							if (isTerrainClick)
+							{
+								sTile[i].terrainFrameX = 10;
+								sTile[i].terrainFrameY = 9;
+								sMiniTile[i].terrainFrameX = 12;
+								sMiniTile[i].terrainFrameY = 10;
+							}
+							if (isObjectClick)
+							{
+								sTile[i].objFrameX = 10;
+								sTile[i].objFrameY = 9;
+								sMiniTile[i].objFrameX = 12;
+								sMiniTile[i].objFrameY = 10;
+							}
 						}
 					}
 				}
@@ -687,7 +695,7 @@ void maptool::render()
 			//Rectangle(getMemDC(), sToolBtn.rcLeftPointer);
 			buttonLeftImg->render(getMemDC(), sToolBtn.rcLeftPointer.left, sToolBtn.rcLeftPointer.top);
 		}
-		if (isRightPonterClick)
+		if (isRightPointerClick)
 		{
 			buttonRightOnImg->render(getMemDC(), sToolBtn.rcRightPointer.left, sToolBtn.rcRightPointer.top);
 		}

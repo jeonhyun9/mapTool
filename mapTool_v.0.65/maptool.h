@@ -36,7 +36,7 @@ private:
 	bool isEraserClick;
 	bool isResetClick;
 	bool isLeftPointerClick;
-	bool isRightPonterClick;
+	bool isRightPointerClick;
 	bool isDragClick;
 	bool isPlayerClick;
 	bool isEnemyClick;
