@@ -84,6 +84,9 @@ HRESULT maptool::init()
 
 	dragRc = RectMake(-10, -10, 1, 1);
 
+
+	//EX
+	
 	return S_OK;
 }
 

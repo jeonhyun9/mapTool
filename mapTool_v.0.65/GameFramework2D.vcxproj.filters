@@ -78,9 +78,6 @@
     <ClInclude Include="progressBar.h">
       <Filter>GameFramework2D\체력바</Filter>
     </ClInclude>
-    <ClInclude Include="playerData.h">
-      <Filter>GameFramework2D\싱글톤데이터</Filter>
-    </ClInclude>
     <ClInclude Include="sceneManager.h">
       <Filter>GameFramework2D\매니져</Filter>
     </ClInclude>
@@ -111,6 +108,9 @@
     </ClInclude>
     <ClInclude Include="loadingScene.h" />
     <ClInclude Include="menuScene.h" />
+    <ClInclude Include="DataManager.h">
+      <Filter>GameFramework2D\싱글톤데이터</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winMain.cpp">
@@ -143,9 +143,6 @@
     <ClCompile Include="progressBar.cpp">
       <Filter>GameFramework2D\체력바</Filter>
     </ClCompile>
-    <ClCompile Include="playerData.cpp">
-      <Filter>GameFramework2D\싱글톤데이터</Filter>
-    </ClCompile>
     <ClCompile Include="sceneManager.cpp">
       <Filter>GameFramework2D\매니져</Filter>
     </ClCompile>
@@ -169,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="loadingScene.cpp" />
     <ClCompile Include="menuScene.cpp" />
+    <ClCompile Include="DataManager.cpp">
+      <Filter>GameFramework2D\싱글톤데이터</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MapToolFramework.rc" />
