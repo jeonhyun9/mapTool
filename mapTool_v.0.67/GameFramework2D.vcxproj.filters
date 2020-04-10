@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="GameFramework2D">
+      <UniqueIdentifier>{a2d0a9a7-2478-49b2-ab90-e5931b927c9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameFramework2D\유틸">
+      <UniqueIdentifier>{a22cbe19-8f6e-4583-8240-bbddcaacc298}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain">
+      <UniqueIdentifier>{f2633db5-0743-4be4-8599-5519e1375a42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameFramework2D\매니져">
+      <UniqueIdentifier>{cc3f996c-b2a8-4c0d-92ae-b58a3950fa63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameFramework2D\이미지">
+      <UniqueIdentifier>{9615466f-c4a7-4386-b352-ce900487e2ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameFramework2D\카메라">
+      <UniqueIdentifier>{9fbaf76e-b749-46c3-aa5c-e71d2be8f7ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameFramework2D\체력바">
+      <UniqueIdentifier>{5e51dd86-a0c1-4370-9f1d-1975025e79cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameFramework2D\싱글톤데이터">
+      <UniqueIdentifier>{bd7ae7cc-5b31-466d-8457-1d0eb40bb16d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameFramework2D\INI데이터">
+      <UniqueIdentifier>{6b7e9e77-62b9-463d-b271-4e0ab595ea41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameFramework2D\로딩">
+      <UniqueIdentifier>{92d3c614-05c5-41ba-a32e-d8a4994995c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{c9a127aa-c7a8-439b-a7a5-80732a94972c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\GameNode">
+      <UniqueIdentifier>{3bc1cdb0-28db-47c0-bbf4-eb68a8fb3418}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\맵툴_슈마메">
+      <UniqueIdentifier>{2c1f6fc5-1af3-467f-9b93-4229bd635eaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\맵툴_슈마메\참고용_선생님코드">
+      <UniqueIdentifier>{864a6446-612f-454a-8423-0cecac3dc06b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\씬">
+      <UniqueIdentifier>{b72224f8-9624-4a91-95b2-4c143c8f0951}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\클래스">
+      <UniqueIdentifier>{c2ddd52d-511b-4dd5-9110-a03af6f062cc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="commonMacroFunction.h">
+      <Filter>GameFramework2D\유틸</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="gameNode.h">
+      <Filter>Main\GameNode</Filter>
+    </ClInclude>
+    <ClInclude Include="singletonBase.h">
+      <Filter>GameFramework2D\매니져</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>GameFramework2D\매니져</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>GameFramework2D\유틸</Filter>
+    </ClInclude>
+    <ClInclude Include="image.h">
+      <Filter>GameFramework2D\이미지</Filter>
+    </ClInclude>
+    <ClInclude Include="imageManager.h">
+      <Filter>GameFramework2D\매니져</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>GameFramework2D\카메라</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>GameFramework2D\유틸</Filter>
+    </ClInclude>
+    <ClInclude Include="progressBar.h">
+      <Filter>GameFramework2D\체력바</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneManager.h">
+      <Filter>GameFramework2D\매니져</Filter>
+    </ClInclude>
+    <ClInclude Include="iniData.h">
+      <Filter>GameFramework2D\INI데이터</Filter>
+    </ClInclude>
+    <ClInclude Include="loading.h">
+      <Filter>GameFramework2D\로딩</Filter>
+    </ClInclude>
+    <ClInclude Include="soundManager.h">
+      <Filter>GameFramework2D\매니져</Filter>
+    </ClInclude>
+    <ClInclude Include="maptoolScene.h">
+      <Filter>Main\맵툴_슈마메\참고용_선생님코드</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="maptool.h">
+      <Filter>Main\맵툴_슈마메</Filter>
+    </ClInclude>
+    <ClInclude Include="temp_tileNode.h">
+      <Filter>Main\맵툴_슈마메\참고용_선생님코드</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="tileNode.h">
+      <Filter>Main\맵툴_슈마메</Filter>
+    </ClInclude>
+    <ClInclude Include="DataManager.h">
+      <Filter>GameFramework2D\싱글톤데이터</Filter>
+    </ClInclude>
+    <ClInclude Include="ingameScene.h">
+      <Filter>Main\씬</Filter>
+    </ClInclude>
+    <ClInclude Include="loadingScene.h">
+      <Filter>Main\씬</Filter>
+    </ClInclude>
+    <ClInclude Include="menuScene.h">
+      <Filter>Main\씬</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>Main\클래스</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Main\클래스</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="winMain.cpp">
+      <Filter>WinMain</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>WinMain</Filter>
+    </ClCompile>
+    <ClCompile Include="gameNode.cpp">
+      <Filter>Main\GameNode</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>GameFramework2D\매니져</Filter>
+    </ClCompile>
+    <ClCompile Include="random.cpp">
+      <Filter>GameFramework2D\유틸</Filter>
+    </ClCompile>
+    <ClCompile Include="image.cpp">
+      <Filter>GameFramework2D\이미지</Filter>
+    </ClCompile>
+    <ClCompile Include="imageManager.cpp">
+      <Filter>GameFramework2D\매니져</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>GameFramework2D\카메라</Filter>
+    </ClCompile>
+    <ClCompile Include="util.cpp">
+      <Filter>GameFramework2D\유틸</Filter>
+    </ClCompile>
+    <ClCompile Include="progressBar.cpp">
+      <Filter>GameFramework2D\체력바</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneManager.cpp">
+      <Filter>GameFramework2D\매니져</Filter>
+    </ClCompile>
+    <ClCompile Include="iniData.cpp">
+      <Filter>GameFramework2D\INI데이터</Filter>
+    </ClCompile>
+    <ClCompile Include="loading.cpp">
+      <Filter>GameFramework2D\로딩</Filter>
+    </ClCompile>
+    <ClCompile Include="soundManager.cpp">
+      <Filter>GameFramework2D\매니져</Filter>
+    </ClCompile>
+    <ClCompile Include="maptoolScene.cpp">
+      <Filter>Main\맵툴_슈마메\참고용_선생님코드</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="maptool.cpp">
+      <Filter>Main\맵툴_슈마메</Filter>
+    </ClCompile>
+    <ClCompile Include="DataManager.cpp">
+      <Filter>GameFramework2D\싱글톤데이터</Filter>
+    </ClCompile>
+    <ClCompile Include="ingameScene.cpp">
+      <Filter>Main\씬</Filter>
+    </ClCompile>
+    <ClCompile Include="loadingScene.cpp">
+      <Filter>Main\씬</Filter>
+    </ClCompile>
+    <ClCompile Include="menuScene.cpp">
+      <Filter>Main\씬</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>Main\클래스</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Main\클래스</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MapToolFramework.rc" />
+  </ItemGroup>
+</Project>
