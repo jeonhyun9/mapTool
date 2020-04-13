@@ -30,6 +30,9 @@ private:
 	RECT rcMenuButtonRS;	//¸®½æ
 	RECT rcMenuButtonOP;	//¿É¼Ç
 	RECT rcMenuButtonEX;	//¿¢½ÃÆ®
+	bool isTouch_RS;
+	bool isTouch_EX;
+
 	bool isMenu;
 public:
 	HRESULT init();

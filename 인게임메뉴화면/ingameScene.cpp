@@ -26,6 +26,9 @@ HRESULT ingameScene::init()
 	//메뉴 렉트 초기화 - 이준 0413
 	rcMenuMain = RectMakeCenter(WINSIZEX / 2, -270, 594, 540);
 	isMenu = false;
+	isTouch_RS = false;
+	isTouch_EX = false;
+
 	return S_OK;
 }
 
@@ -38,6 +41,8 @@ void ingameScene::release()
 void ingameScene::update()
 {
 	
+	rcMenuButtonRS = RectMake(rcMenuMain.left + 240, rcMenuMain.top + 220, 170, 62);
+	rcMenuButtonEX = RectMake(rcMenuMain.left + 240, rcMenuMain.top + 320, 170, 62);
 
 	//함수 추가 - 이준
 	this->load();
@@ -64,6 +69,43 @@ void ingameScene::update()
 		{
 			rcMenuMain.top = WINSIZEY / 2 - 270;
 			rcMenuMain.bottom = rcMenuMain.top + 540;
+		}
+
+		if (PtInRect(&rcMenuButtonRS, _ptMouse))
+		{
+			isTouch_RS = true;
+			if (INPUT->GetKeyDown(VK_LBUTTON))
+			{
+				isMenu = false;
+			}
+		}
+		else
+		{
+			isTouch_RS = false;
+		}
+
+		if (PtInRect(&rcMenuButtonEX, _ptMouse))
+		{
+			isTouch_EX = true;
+			if (INPUT->GetKeyDown(VK_LBUTTON))
+			{
+				SCENEMANAGER->loadScene("메뉴");
+			}
+		}
+		else
+		{
+			isTouch_EX = false;
+		}
+	}
+	else
+	{
+		rcMenuMain.bottom -= 7;
+		rcMenuMain.top -= 7;
+
+		if (rcMenuMain.bottom <= 0)
+		{
+			rcMenuMain.top = -540;
+			rcMenuMain.bottom = 0;
 		}
 	}
 	//if (!isMenu)
@@ -157,6 +199,26 @@ void ingameScene::render()
 
 	//Rectangle(getMemDC(), rcMenuMain);
 	IMAGEMANAGER->findImage("인게임메뉴화면")->render(getMemDC(), rcMenuMain.left, rcMenuMain.top);
+
+	//Rectangle(getMemDC(), rcMenuButtonRS);
+	//Rectangle(getMemDC(), rcMenuButtonEX);
+	if (isTouch_RS)
+	{
+		IMAGEMANAGER->findImage("인게임_계속버튼On")->render(getMemDC(), rcMenuButtonRS.left, rcMenuButtonRS.top);
+	}
+	else
+	{
+		IMAGEMANAGER->findImage("인게임_계속버튼")->render(getMemDC(), rcMenuButtonRS.left, rcMenuButtonRS.top);
+	}
+
+	if (isTouch_EX)
+	{
+		IMAGEMANAGER->findImage("인게임_나가기버튼On")->render(getMemDC(), rcMenuButtonEX.left, rcMenuButtonEX.top);
+	}
+	else
+	{
+		IMAGEMANAGER->findImage("인게임_나가기버튼")->render(getMemDC(), rcMenuButtonEX.left, rcMenuButtonEX.top);
+	}
 
 	ptPlayer->render();
 	ptEnemy->render();

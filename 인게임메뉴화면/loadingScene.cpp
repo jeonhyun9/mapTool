@@ -171,6 +171,10 @@ void loadingScene::loadingImage()
 	_loading->loadFrameImage("마리오_IDLE", "images/마리오_IDLE.bmp", 75, 40,5,2);
 
 	_loading->loadImage("인게임메뉴화면", "images/인게임메뉴화면.bmp", 594, 540);
+	_loading->loadImage("인게임_계속버튼", "images/인게임_계속버튼.bmp", 170, 62);
+	_loading->loadImage("인게임_나가기버튼", "images/인게임_나가기버튼.bmp", 170, 62);
+	_loading->loadImage("인게임_계속버튼On", "images/인게임_계속버튼On.bmp", 185, 68);
+	_loading->loadImage("인게임_나가기버튼On", "images/인게임_나가기버튼On.bmp", 185, 68);
 
 	//_loading->loadFrameImage("")
 																
