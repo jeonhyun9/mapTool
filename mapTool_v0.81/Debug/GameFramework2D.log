@@ -1,0 +1,2 @@
+﻿  ingameScene.cpp
+E:\소스트리저장소\mapTool_v0.81\ingameScene.cpp(60,24): error C2065: 'VK_ESC': 선언되지 않은 식별자입니다.
